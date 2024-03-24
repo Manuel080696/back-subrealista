@@ -8,7 +8,9 @@ const init = async () => {
   try {
     connection = await getDB();
 
+    await connection.query('DROP DATABASE IF EXISTS subrealista;');
     await connection.query('CREATE DATABASE IF NOT EXISTS subrealista;');
+    await connection.query('USE subrealista;');
 
     console.log('Creando tablas');
     console.log('Creando tabla users');
@@ -24,6 +26,7 @@ const init = async () => {
       active BOOLEAN DEFAULT false,
       createdAt DATETIME NOT NULL DEFAULT NOW(),
       modifiedAt DATETIME,
+      registrationCode VARCHAR(100),
       role ENUM('admin','user') DEFAULT 'user'	
     );
     `);

@@ -19,8 +19,23 @@ app.use(function (req, res, next) {
   next();
 });
 
-//Middleware autentificación de usuarios
+// Middleware autentificación de usuarios
 const { authUser } = require('./middlewares/auth.js');
+
+// Middleware para JSON
+app.use(express.json());
+
+// Controllers usuarios
+const {
+  createNewUser,
+  validateUser,
+  loginUser,
+} = require('./controllers/users/index.js');
+
+// Rutas usuarios
+app.post('/register', createNewUser);
+app.post('/validate', validateUser);
+app.post('/login', loginUser);
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));
