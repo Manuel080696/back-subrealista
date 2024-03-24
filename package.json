@@ -1,23 +1,12 @@
 {
-  "name": "retrotech-shop",
-  "version": "1.0.0",
-  "description": "e-shop for retro technology products",
+  "name": "subrealista",
   "main": "server.js",
   "scripts": {
     "start": "nodemon start",
     "initDB": "node ./db/initDB.js"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -26,8 +15,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "mysql2": "^3.9.2",
-    "nodemailer": "^6.9.13",
-    "nodemailer-sendgrid": "^1.0.3",
+    "node-mailjet": "^6.0.5",
     "nodemon": "^3.1.0"
   },
   "devDependencies": {

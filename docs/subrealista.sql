@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS users(
     active BOOLEAN DEFAULT false,
     createdAt DATETIME NOT NULL DEFAULT NOW(),
     modifiedAt DATETIME,
+    registrationCode VARCHAR(100),
     role ENUM('admin','user') DEFAULT 'user'	
 );
 
