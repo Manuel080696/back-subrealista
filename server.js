@@ -31,13 +31,17 @@ const {
   validateUser,
   loginUser,
   getUserProfile,
+  updateProfile,
+  getRentings,
 } = require('./controllers/users/index.js');
 
 // Rutas usuarios
-app.post('/register', createNewUser);
-app.post('/validate', validateUser);
-app.post('/login', loginUser);
-app.get('/users/:username', getUserProfile);
+app.post('/register', createNewUser); //registro
+app.post('/validate', validateUser); //activacion
+app.post('/login', loginUser); //login
+app.get('/users/:username', getUserProfile); //perfil
+app.put('/users/:username', authUser, updateProfile); //actualizar
+app.get('/users/:username/rentings', getRentings); //ver pisos
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));
