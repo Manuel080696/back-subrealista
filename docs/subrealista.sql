@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS users(
 CREATE TABLE IF NOT EXISTS rentings(
 	rent_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
     rent_owner INT UNSIGNED NOT NULL,
-    rent_tenant INT UNSIGNED NOT NULL,
+    rent_tenant INT UNSIGNED,
     rent_title VARCHAR(100) NOT NULL,
     rent_type ENUM('Chalet','Piso','Casa','Apartamento') NOT NULL,
     rent_description VARCHAR(255) NOT NULL,
@@ -68,4 +68,21 @@ CREATE TABLE IF NOT EXISTS ratings(
     FOREIGN KEY (renting_id) REFERENCES rentings(rent_id)
 );
 
-/* TABLAS DE SERVICIOS*/
+CREATE TABLE IF NOT EXISTS services(
+	rent_equipment_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	renting_id INT UNSIGNED NOT NULL,
+    elevator BOOLEAN DEFAULT false,
+    near_beach BOOLEAN DEFAULT false,
+    near_mountain BOOLEAN DEFAULT false,
+    hairdryer BOOLEAN DEFAULT false,
+    washing_machine BOOLEAN DEFAULT false,
+    ac BOOLEAN DEFAULT false,
+    smoke_detector BOOLEAN DEFAULT false,
+    first_kit_aid BOOLEAN DEFAULT false,
+    wifi BOOLEAN DEFAULT false, 
+    refrigerator BOOLEAN DEFAULT false,
+    freezer BOOLEAN DEFAULT false,
+    toaster BOOLEAN DEFAULT false, 
+    fully_equipped BOOLEAN DEFAULT false,
+    FOREIGN KEY (renting_id) REFERENCES rentings(rent_id)
+);

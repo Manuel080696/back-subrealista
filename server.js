@@ -30,12 +30,14 @@ const {
   createNewUser,
   validateUser,
   loginUser,
+  getUserProfile,
 } = require('./controllers/users/index.js');
 
 // Rutas usuarios
 app.post('/register', createNewUser);
 app.post('/validate', validateUser);
 app.post('/login', loginUser);
+app.get('/users/:username', getUserProfile);
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));
