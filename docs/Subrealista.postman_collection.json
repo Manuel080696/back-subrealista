@@ -10,45 +10,6 @@
 			"name": "Users Queries",
 			"item": [
 				{
-					"name": "loginUser",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const responseJson = pm.response.json();\r",
-									"    pm.collectionVariables.set('JWT', responseJson.token);"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email\",\r\n    \"password\": \"password\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/login",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "newUser",
 					"request": {
 						"method": "POST",
@@ -95,6 +56,243 @@
 							],
 							"path": [
 								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"    pm.collectionVariables.set('JWT', responseJson.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"email\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/:username",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "kaysera"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Renting Queries",
+			"item": [
+				{
+					"name": "allRentings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}",
+							"host": [
+								"{{URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filteredSearch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/search?rent_location=&min_price=&max_price=&min_rooms=&max_rooms=",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "rent_location",
+									"value": ""
+								},
+								{
+									"key": "min_price",
+									"value": ""
+								},
+								{
+									"key": "max_price",
+									"value": ""
+								},
+								{
+									"key": "min_rooms",
+									"value": ""
+								},
+								{
+									"key": "max_rooms",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newRenting",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rent_title\": \"prueba\",\r\n    \"rent_type\": \"Piso\",\r\n    \"rent_rooms\": \"4\",\r\n    \"rent_description\": \"prueba\",\r\n    \"rent_price\": \"450\",\r\n    \"rent_location\": \"Balears\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/new-renting",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"new-renting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRenting",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rent_title\": \"Prueba de cambio\",\r\n    \"rent_type\": \"Piso\",\r\n    \"rent_rooms\": \"3\",\r\n    \"rent_description\": \"Prueba de cambio\",\r\n    \"rent_price\": \"3500\",\r\n    \"rent_location\": \"Balears\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/rentings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rentings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRenting",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/rentings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rentings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSingleRental",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/rentings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rentings",
+								"1"
 							]
 						}
 					},

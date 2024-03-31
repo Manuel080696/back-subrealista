@@ -1,3 +1,4 @@
+const { generateError } = require('../../../helpers/generateError.js');
 const getPool = require('../../getDB.js');
 
 const deleteRental = async (rent_owner, rent_id) => {
@@ -15,6 +16,15 @@ const deleteRental = async (rent_owner, rent_id) => {
 
     if (checkOwner[0].id != rent_owner) {
       throw generateError(`¡Este alquiler no es tuyo!`, 403);
+    }
+
+    const [rentalExists] = await connection.query(
+      `SELECT * FROM rentings WHERE rent_id=?`,
+      [rent_id]
+    );
+
+    if (rentalExists.length === 0) {
+      throw generateError(`¡Este alquiler no existe!`, 403);
     }
 
     await connection.query(
