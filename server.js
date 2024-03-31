@@ -35,6 +35,16 @@ const {
   getRentings,
 } = require('./controllers/users/index.js');
 
+// Controllers alquileres
+const {
+  getAllRentings,
+  filteredSearch,
+  newRenting,
+  updateRenting,
+  deleteRenting,
+  getSingleRental,
+} = require('./controllers/rentings/index.js');
+
 // Rutas usuarios
 app.post('/register', createNewUser); //registro
 app.post('/validate', validateUser); //activacion
@@ -42,6 +52,14 @@ app.post('/login', loginUser); //login
 app.get('/users/:username', getUserProfile); //perfil
 app.put('/users/:username', authUser, updateProfile); //actualizar
 app.get('/users/:username/rentings', getRentings); //ver pisos
+
+// Rutas alquileres
+app.get('/', getAllRentings); // Ver todos
+app.get('/rentings/:id', getSingleRental); // Ver un alojamiento
+app.get('/search', filteredSearch); // Ver por filtros
+app.post('/new-renting', authUser, newRenting); // Postear nuevo
+app.put('/rentings/:id', authUser, updateRenting); // Editar alojamiento
+app.delete('/rentings/:id', authUser, deleteRenting); // Borrar alojamiento
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));
