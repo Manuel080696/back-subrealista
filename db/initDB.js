@@ -39,6 +39,7 @@ const init = async () => {
       rent_tenant INT UNSIGNED,
       rent_title VARCHAR(100) NOT NULL,
       rent_type ENUM('Chalet','Piso','Casa','Apartamento') NOT NULL,
+      rent_rooms TINYINT UNSIGNED,
       rent_description VARCHAR(255) NOT NULL,
       rent_price INT UNSIGNED NOT NULL,
       rent_location ENUM('Andalucía', 'Aragón', 'Asturias', 'Balears', 'Canarias', 'Cantabria','Castilla y León', 'Castilla - La Mancha', 'Catalunya', 'Comunitat Valenciana', 'Extremadura', 'Galicia', 'Madrid', 'Murcia', 'Navarra', 'País Vasco', 'Rioja', 'Ceuta', 'Melilla') NOT NULL, 
