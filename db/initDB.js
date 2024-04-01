@@ -54,6 +54,7 @@ const init = async () => {
       rental_tenant VARCHAR(20) NOT NULL,
       rental_start DATETIME NOT NULL,
       rental_end DATETIME NOT NULL,
+      rental_status ENUM('Aceptado', 'Rechazado', 'Pendiente') DEFAULT 'Pendiente',
       FOREIGN KEY (rental_rent_id) REFERENCES rentings(rent_id),
       FOREIGN KEY (rental_tenant) REFERENCES users(username)
     );
