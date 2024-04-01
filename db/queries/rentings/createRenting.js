@@ -7,7 +7,7 @@ const createRenting = async (
   rent_description,
   rent_price,
   rent_location,
-  id
+  rent_owner
 ) => {
   let connection;
 
@@ -26,7 +26,7 @@ const createRenting = async (
         rent_description,
         rent_price,
         rent_location,
-        id,
+        rent_owner,
       ]
     );
 

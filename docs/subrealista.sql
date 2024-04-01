@@ -55,14 +55,6 @@ CREATE TABLE IF NOT EXISTS rent_images(
     FOREIGN KEY (rent_id) REFERENCES rentings(rent_id)
 );
 
-CREATE TABLE IF NOT EXISTS rent_dates(
-	rent_date_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    rent_id INT UNSIGNED NOT NULL,
-    rent_startDate DATETIME NOT NULL,
-    rent_endDate DATETIME NOT NULL,
-    FOREIGN KEY (rent_id) REFERENCES rentings(rent_id)
-);
-
 CREATE TABLE IF NOT EXISTS ratings(
 	rating_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     owner_id VARCHAR(20) NOT NULL,

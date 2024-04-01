@@ -5,7 +5,7 @@ const deleteRenting = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, process.env.SECRET);
-    const rent_owner = decodedToken.id;
+    const rent_owner = decodedToken.username;
     const rent_id = req.params.id;
 
     await deleteRental(rent_owner, rent_id);

@@ -19,4 +19,4 @@ const getAllUserProducts = async (rent_owner) => {
   }
 };
 
-module.exports = { getAllUserProducts };
+module.exports = getAllUserProducts;

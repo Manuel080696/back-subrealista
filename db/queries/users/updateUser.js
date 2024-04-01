@@ -1,15 +1,16 @@
 const getPool = require('../../getDB.js');
 
-const updateUser = async (email, username, bio, address, password, id) => {
+const updateUser = async (email, username, bio, address, oldUsername) => {
   try {
     const pool = await getPool();
 
     const [result] = await pool.query(
       `
-      UPDATE users SET email = ?, username = ?, bio = ?, address = ?, password = ?
-      WHERE id = ?
+      UPDATE users
+      SET email = ?, username = ?, bio = ?, address = ?
+      WHERE username = ?
     `,
-      [email, username, bio, address, password, id]
+      [email, username, bio, address, oldUsername]
     );
 
     return result.affectedRows;

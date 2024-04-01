@@ -1,7 +1,12 @@
 const { createRenting } = require('../../db/queries/rentings/createRenting.js');
+const jwt = require('jsonwebtoken');
 
 const newRenting = async (req, res, next) => {
   try {
+    const token = req.headers.authorization;
+    const decodedToken = jwt.verify(token, process.env.SECRET);
+    const username = decodedToken.username;
+
     const {
       rent_title,
       rent_type,
@@ -18,7 +23,7 @@ const newRenting = async (req, res, next) => {
       rent_description,
       rent_price,
       rent_location,
-      req.userId
+      username
     );
 
     res.send({
