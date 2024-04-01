@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS rentings(
     rent_description VARCHAR(255) NOT NULL,
     rent_price INT UNSIGNED NOT NULL,
     rent_location ENUM('Andalucía', 'Aragón', 'Asturias', 'Balears', 'Canarias', 'Cantabria','Castilla y León', 'Castilla - La Mancha', 'Catalunya', 'Comunitat Valenciana', 'Extremadura', 'Galicia', 'Madrid', 'Murcia', 'Navarra', 'País Vasco', 'Rioja', 'Ceuta', 'Melilla') NOT NULL, 
+	active BOOLEAN DEFAULT true,
     createdAt DATETIME NOT NULL DEFAULT NOW(),
     FOREIGN KEY (rent_owner) REFERENCES users(username)
 );

@@ -1,17 +1,20 @@
-const { getMyRentals } = require('../../db/queries/rentals/getMyRentals.js');
+const {
+  getMyRentingsId,
+} = require('../../db/queries/rentals/getMyRentingsId.js');
 const jwt = require('jsonwebtoken');
 
-const myRentals = async (req, res, next) => {
+const myRentingsId = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, process.env.SECRET);
     const username = decodedToken.username;
+    const { id } = req.params;
 
-    const userRentals = await getMyRentals(username);
+    const userRentals = await getMyRentingsId(id, username);
 
     res.send({
       status: 'ok',
-      message: 'Listado de peticiones enviadas: ',
+      message: 'Listado de peticiones: ',
       data: userRentals,
     });
   } catch (error) {
@@ -19,4 +22,4 @@ const myRentals = async (req, res, next) => {
   }
 };
 
-module.exports = myRentals;
+module.exports = myRentingsId;

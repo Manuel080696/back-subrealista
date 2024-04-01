@@ -50,6 +50,8 @@ const {
   bookRental,
   myRentals,
   myRentalId,
+  myRentings,
+  myRentingsId,
 } = require('./controllers/rentals/index.js');
 
 // Rutas usuarios
@@ -70,8 +72,10 @@ app.delete('/rentings/:id', authUser, deleteRenting); // Borrar alojamiento
 
 // Rutas reservas
 app.post('/rentings/:id', authUser, bookRental); // Enviar peticion de reserva
-app.get('/myrentals', authUser, myRentals); // Ver estado de peticiones
-app.get('/myrentals/:id', authUser, myRentalId); // Ver estado de peticion individual
+app.get('/myrentals', authUser, myRentals); // Ver estado de peticiones propias
+app.get('/myrentals/:id', authUser, myRentalId); // Ver estado de peticion individual propia
+app.get('/myrentings', authUser, myRentings); // Ver estado de peticiones recibidas
+app.get('/myrentings/:id', authUser, myRentingsId); // Ves estado individual de peticiones recibidas
 // Aceptar/rechazar la reserva como dueño
 // Cancelar la peticion de reserva como interesado
 

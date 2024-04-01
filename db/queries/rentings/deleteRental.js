@@ -29,7 +29,7 @@ const deleteRental = async (rent_owner, rent_id) => {
 
     await connection.query(
       `
-        DELETE FROM rentings WHERE rent_id=?
+        UPDATE rentings SET active=false WHERE rent_id=?
         `,
       [rent_id]
     );
