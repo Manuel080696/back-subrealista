@@ -43,6 +43,7 @@ const {
   updateRenting,
   deleteRenting,
   getSingleRental,
+  bookRental,
 } = require('./controllers/rentings/index.js');
 
 // Rutas usuarios
@@ -60,6 +61,13 @@ app.get('/search', filteredSearch); // Ver por filtros
 app.post('/new-renting', authUser, newRenting); // Postear nuevo
 app.put('/rentings/:id', authUser, updateRenting); // Editar alojamiento
 app.delete('/rentings/:id', authUser, deleteRenting); // Borrar alojamiento
+
+// Rutas reservas
+app.post('/rentings/:id', authUser, bookRental); // Enviar peticion de reserva
+// Ver estado de peticiones
+// Ver estado de peticion individual
+// Aceptar/rechazar la reserva
+// Cancelar la peticion de reserva
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));

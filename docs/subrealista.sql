@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS users(
 CREATE TABLE IF NOT EXISTS rentings(
 	rent_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
     rent_owner VARCHAR(20) NOT NULL,
-    rent_tenant VARCHAR(20),
     rent_title VARCHAR(100) NOT NULL,
     rent_type ENUM('Chalet','Piso','Casa','Apartamento') NOT NULL,
     rent_rooms TINYINT UNSIGNED,
@@ -27,8 +26,17 @@ CREATE TABLE IF NOT EXISTS rentings(
     rent_price INT UNSIGNED NOT NULL,
     rent_location ENUM('Andalucía', 'Aragón', 'Asturias', 'Balears', 'Canarias', 'Cantabria','Castilla y León', 'Castilla - La Mancha', 'Catalunya', 'Comunitat Valenciana', 'Extremadura', 'Galicia', 'Madrid', 'Murcia', 'Navarra', 'País Vasco', 'Rioja', 'Ceuta', 'Melilla') NOT NULL, 
     createdAt DATETIME NOT NULL DEFAULT NOW(),
-    FOREIGN KEY (rent_owner) REFERENCES users(username),
-    FOREIGN KEY (rent_tenant) REFERENCES users(username)
+    FOREIGN KEY (rent_owner) REFERENCES users(username)
+);
+
+CREATE TABLE IF NOT EXISTS rentals(
+	rental_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    rental_rent_id INT UNSIGNED NOT NULL,
+    rental_tenant VARCHAR(20) NOT NULL,
+    rental_start DATETIME NOT NULL,
+    rental_end DATETIME NOT NULL,
+    FOREIGN KEY (rental_rent_id) REFERENCES rentings(rent_id),
+    FOREIGN KEY (rental_tenant) REFERENCES users(username)
 );
 
 CREATE TABLE IF NOT EXISTS favorites(

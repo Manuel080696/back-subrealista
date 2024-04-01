@@ -4,6 +4,7 @@ const newRenting = require('./newRenting.js');
 const updateRenting = require('./updateRenting.js');
 const deleteRenting = require('./deleteRenting.js');
 const getSingleRental = require('./getSingleRental.js');
+const bookRental = require('./bookRental.js');
 
 module.exports = {
   getAllRentings,
@@ -12,4 +13,5 @@ module.exports = {
   updateRenting,
   deleteRenting,
   getSingleRental,
+  bookRental,
 };
