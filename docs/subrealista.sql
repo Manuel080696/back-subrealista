@@ -32,11 +32,13 @@ CREATE TABLE IF NOT EXISTS rentings(
 CREATE TABLE IF NOT EXISTS rentals(
 	rental_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     rental_rent_id INT UNSIGNED NOT NULL,
+    rental_owner VARCHAR(20) NOT NULL,
     rental_tenant VARCHAR(20) NOT NULL,
     rental_start DATETIME NOT NULL,
     rental_end DATETIME NOT NULL,
     rental_status ENUM('Aceptado', 'Rechazado', 'Pendiente') DEFAULT 'Pendiente',
     FOREIGN KEY (rental_rent_id) REFERENCES rentings(rent_id),
+    FOREIGN KEY (rental_owner) REFERENCES users(username),
     FOREIGN KEY (rental_tenant) REFERENCES users(username)
 );
 

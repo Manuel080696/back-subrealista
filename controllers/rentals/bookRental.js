@@ -1,4 +1,4 @@
-const { postRental } = require('../../db/queries/rentals/postRental.js');
+const postRental = require('../../db/queries/rentals/postRental.js');
 const jwt = require('jsonwebtoken');
 
 const bookRental = async (req, res, next) => {

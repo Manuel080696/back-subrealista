@@ -46,7 +46,11 @@ const {
 } = require('./controllers/rentings/index.js');
 
 // Controllers reservas
-const { bookRental, myRentals } = require('./controllers/rentals/index.js');
+const {
+  bookRental,
+  myRentals,
+  myRentalId,
+} = require('./controllers/rentals/index.js');
 
 // Rutas usuarios
 app.post('/register', createNewUser); //registro
@@ -67,9 +71,9 @@ app.delete('/rentings/:id', authUser, deleteRenting); // Borrar alojamiento
 // Rutas reservas
 app.post('/rentings/:id', authUser, bookRental); // Enviar peticion de reserva
 app.get('/myrentals', authUser, myRentals); // Ver estado de peticiones
-// Ver estado de peticion individual
-// Aceptar/rechazar la reserva
-// Cancelar la peticion de reserva
+app.get('/myrentals/:id', authUser, myRentalId); // Ver estado de peticion individual
+// Aceptar/rechazar la reserva como dueño
+// Cancelar la peticion de reserva como interesado
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));

@@ -9,7 +9,7 @@ const activateUser = async (username) => {
       [username]
     );
 
-    console.log('Usuario actualizado:', user);
+    console.log('Usuario activado:');
 
     return user;
   } catch (error) {
