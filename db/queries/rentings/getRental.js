@@ -16,10 +16,20 @@ const getRental = async (id) => {
       [id]
     );
 
+    const [images] = await connection.query(
+      `
+      SELECT rent_image FROM rent_images WHERE rent_id = ?
+      `,
+      [id]
+    );
+
     if (result.length === 0) {
       throw generateError('Este alquiler no existe', 404);
     }
-    return result[0];
+
+    const finalResult = [result[0], images];
+
+    return finalResult;
   } finally {
     if (connection) connection.release;
   }
