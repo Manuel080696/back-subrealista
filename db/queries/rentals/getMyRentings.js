@@ -9,6 +9,7 @@ const getMyRentings = async (rental_owner) => {
     const [result] = await connection.query(
       `
       SELECT
+      rentals.rental_id,
       rentals.rental_tenant,
       rentings.rent_title,
       rentings.rent_description,

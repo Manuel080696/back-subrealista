@@ -52,6 +52,8 @@ const {
   myRentalId,
   myRentings,
   myRentingsId,
+  manageRentings,
+  cancelRental,
 } = require('./controllers/rentals/index.js');
 
 // Rutas usuarios
@@ -76,8 +78,8 @@ app.get('/myrentals', authUser, myRentals); // Ver estado de peticiones propias
 app.get('/myrentals/:id', authUser, myRentalId); // Ver estado de peticion individual propia
 app.get('/myrentings', authUser, myRentings); // Ver estado de peticiones recibidas
 app.get('/myrentings/:id', authUser, myRentingsId); // Ves estado individual de peticiones recibidas
-// Aceptar/rechazar la reserva como dueño
-// Cancelar la peticion de reserva como interesado
+app.patch('/myrentings/:id', authUser, manageRentings); // Aceptar/rechazar la reserva como dueño
+app.patch('/myrentals/:id/cancel', authUser, cancelRental); // Cancelar la peticion de reserva como interesado
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));

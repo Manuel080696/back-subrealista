@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"username\",\r\n    \"email\": \"email\",\r\n    \"password\": \"password\"\r\n}",
+							"raw": "{\r\n    \"username\": \"kaysera\",\r\n    \"email\": \"antoniorondanvlc@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email\",\r\n    \"password\": \"password\"\r\n}",
+							"raw": "{\r\n    \"email\": \"antoniorondanvlc@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,19 +106,68 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/:username",
+							"raw": "{{URL}}/users/kaysera0",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								":username"
-							],
-							"variable": [
-								{
-									"key": "username",
-									"value": "kaysera"
+								"kaysera0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editProfile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"pacote@gmail.com\",\r\n    \"username\":\"kaysera0\",\r\n    \"bio\":\"huelo pies\",\r\n    \"address\":\"asdasdasd\",\r\n    \"password\":\"password\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/kaysera",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"kaysera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRentings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/kaysera0/rentings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"kaysera0",
+								"rentings"
 							]
 						}
 					},
@@ -293,6 +342,226 @@
 							"path": [
 								"rentings",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rental Queries",
+			"item": [
+				{
+					"name": "bookRental",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rental_start\":\"2024-04-04\",\r\n    \"rental_end\":\"2024-05-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/rentings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rentings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myRentals",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/myrentals",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"myrentals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myRentalsId",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/myrentals/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"myrentals",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myRentings",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/myrentings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"myrentings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myRentingsId",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/myrentings/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"myrentings",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "manageRentings",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rental_status\": \"Aceptado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/myrentings/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"myrentings",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelRental",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/myrentals/1/cancel",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"myrentals",
+								"1",
+								"cancel"
 							]
 						}
 					},
