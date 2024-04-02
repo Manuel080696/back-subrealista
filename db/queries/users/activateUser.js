@@ -1,15 +1,15 @@
 const getPool = require('../../getDB.js');
 
-const activateUser = async (id) => {
+const activateUser = async (username) => {
   const pool = await getPool();
 
   try {
     const [user] = await pool.query(
-      'UPDATE users SET active = 1 WHERE id = ?',
-      [id]
+      'UPDATE users SET active = 1 WHERE username = ?',
+      [username]
     );
 
-    console.log('Usuario actualizado:', user);
+    console.log('Usuario activado:');
 
     return user;
   } catch (error) {

@@ -1,6 +1,6 @@
 const getPool = require('../../getDB.js');
 
-const getAllUserProducts = async (rent_owner) => {
+const getMyRentingsId = async (rental_id, rental_tenant) => {
   let connection;
 
   try {
@@ -8,9 +8,9 @@ const getAllUserProducts = async (rent_owner) => {
 
     const [result] = await connection.query(
       `
-        SELECT * FROM rentings WHERE rent_owner= ?
-        `,
-      [rent_owner]
+        SELECT * FROM rentals WHERE rental_owner=? AND rental_id=?
+      `,
+      [rental_tenant, rental_id]
     );
 
     return result;
@@ -19,4 +19,4 @@ const getAllUserProducts = async (rent_owner) => {
   }
 };
 
-module.exports = getAllUserProducts;
+module.exports = { getMyRentingsId };

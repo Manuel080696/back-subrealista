@@ -45,6 +45,17 @@ const {
   getSingleRental,
 } = require('./controllers/rentings/index.js');
 
+// Controllers reservas
+const {
+  bookRental,
+  myRentals,
+  myRentalId,
+  myRentings,
+  myRentingsId,
+  manageRentings,
+  cancelRental,
+} = require('./controllers/rentals/index.js');
+
 // Rutas usuarios
 app.post('/register', createNewUser); //registro
 app.post('/validate', validateUser); //activacion
@@ -60,6 +71,15 @@ app.get('/search', filteredSearch); // Ver por filtros
 app.post('/new-renting', authUser, newRenting); // Postear nuevo
 app.put('/rentings/:id', authUser, updateRenting); // Editar alojamiento
 app.delete('/rentings/:id', authUser, deleteRenting); // Borrar alojamiento
+
+// Rutas reservas
+app.post('/rentings/:id', authUser, bookRental); // Enviar peticion de reserva
+app.get('/myrentals', authUser, myRentals); // Ver estado de peticiones propias
+app.get('/myrentals/:id', authUser, myRentalId); // Ver estado de peticion individual propia
+app.get('/myrentings', authUser, myRentings); // Ver estado de peticiones recibidas
+app.get('/myrentings/:id', authUser, myRentingsId); // Ves estado individual de peticiones recibidas
+app.patch('/myrentings/:id', authUser, manageRentings); // Aceptar/rechazar la reserva como dueño
+app.patch('/myrentals/:id/cancel', authUser, cancelRental); // Cancelar la peticion de reserva como interesado
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));

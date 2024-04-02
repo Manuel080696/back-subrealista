@@ -7,7 +7,7 @@ const validateUser = async (req, res) => {
     const user = await checkRegistrationCode(registrationCode);
     if (!user) return res.status(401).json({ error: 'Código invalido' });
 
-    await activateUser(user.id);
+    await activateUser(user.username);
     res
       .status(200)
       .json({ status: 'ok', message: 'Usuario validado correctamente.' });

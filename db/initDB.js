@@ -35,16 +35,31 @@ const init = async () => {
     CREATE TABLE IF NOT EXISTS rentings(
       rent_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
       rent_owner VARCHAR(20) NOT NULL,
-      rent_tenant VARCHAR(20),
       rent_title VARCHAR(100) NOT NULL,
       rent_type ENUM('Chalet','Piso','Casa','Apartamento') NOT NULL,
       rent_rooms TINYINT UNSIGNED,
       rent_description VARCHAR(255) NOT NULL,
       rent_price INT UNSIGNED NOT NULL,
       rent_location ENUM('Andalucía', 'Aragón', 'Asturias', 'Balears', 'Canarias', 'Cantabria','Castilla y León', 'Castilla - La Mancha', 'Catalunya', 'Comunitat Valenciana', 'Extremadura', 'Galicia', 'Madrid', 'Murcia', 'Navarra', 'País Vasco', 'Rioja', 'Ceuta', 'Melilla') NOT NULL, 
+      active BOOLEAN DEFAULT true,
       createdAt DATETIME NOT NULL DEFAULT NOW(),
-      FOREIGN KEY (rent_owner) REFERENCES users(username),
-      FOREIGN KEY (rent_tenant) REFERENCES users(username)
+      FOREIGN KEY (rent_owner) REFERENCES users(username)
+    );
+    `);
+
+    console.log('Creando tabla rentals');
+    await connection.query(`
+    CREATE TABLE IF NOT EXISTS rentals(
+      rental_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+      rental_rent_id INT UNSIGNED NOT NULL,
+      rental_owner VARCHAR(20) NOT NULL,
+      rental_tenant VARCHAR(20) NOT NULL,
+      rental_start DATETIME NOT NULL,
+      rental_end DATETIME NOT NULL,
+      rental_status ENUM('Aceptado', 'Rechazado', 'Pendiente') DEFAULT 'Pendiente',
+      FOREIGN KEY (rental_rent_id) REFERENCES rentings(rent_id),
+      FOREIGN KEY (rental_owner) REFERENCES users(username),
+      FOREIGN KEY (rental_tenant) REFERENCES users(username)
     );
     `);
 
@@ -66,17 +81,6 @@ const init = async () => {
       rent_id INT UNSIGNED NOT NULL,
       rent_image VARCHAR(255),
       createdAt DATETIME NOT NULL DEFAULT NOW(),
-      FOREIGN KEY (rent_id) REFERENCES rentings(rent_id)
-    );
-    `);
-
-    console.log('Creando tabla rent_dates');
-    await connection.query(`
-    CREATE TABLE IF NOT EXISTS rent_dates(
-      rent_date_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-      rent_id INT UNSIGNED NOT NULL,
-      rent_startDate DATETIME NOT NULL,
-      rent_endDate DATETIME NOT NULL,
       FOREIGN KEY (rent_id) REFERENCES rentings(rent_id)
     );
     `);
