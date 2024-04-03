@@ -3,7 +3,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon start",
-    "initDB": "node ./db/initDB.js"
+    "initDB": "node ./db/initDB.js",
+    "populateDB": "node ./db/populateDB.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

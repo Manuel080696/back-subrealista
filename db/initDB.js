@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const getDB = require('./getDB.js');
 
 const init = async () => {
@@ -23,7 +22,7 @@ const init = async () => {
       bio VARCHAR(255), 
       address VARCHAR(100),
       active BOOLEAN DEFAULT false,
-      createdAt DATETIME NOT NULL DEFAULT NOW(),
+      createdAt DATETIME DEFAULT NOW(),
       modifiedAt DATETIME,
       registrationCode VARCHAR(100),
       role ENUM('admin','user') DEFAULT 'user'	
@@ -40,10 +39,10 @@ const init = async () => {
       rent_rooms TINYINT UNSIGNED,
       rent_description VARCHAR(255) NOT NULL,
       rent_price INT UNSIGNED NOT NULL,
-      rent_location ENUM('Andalucía', 'Aragón', 'Asturias', 'Balears', 'Canarias', 'Cantabria','Castilla y León', 'Castilla - La Mancha', 'Catalunya', 'Comunitat Valenciana', 'Extremadura', 'Galicia', 'Madrid', 'Murcia', 'Navarra', 'País Vasco', 'Rioja', 'Ceuta', 'Melilla') NOT NULL, 
+      rent_location ENUM('Andalucia', 'Aragon', 'Asturias', 'Balears', 'Canarias', 'Cantabria','Castilla y Leon', 'Castilla La Mancha', 'Cataluña', 'Comunidad Valenciana', 'Extremadura', 'Galicia', 'Madrid', 'Murcia', 'Navarra', 'Pais Vasco', 'Rioja', 'Ceuta', 'Melilla') NOT NULL, 
       rent_cover VARCHAR(255) NOT NULL,
       active BOOLEAN DEFAULT true,
-      createdAt DATETIME NOT NULL DEFAULT NOW(),
+      createdAt DATETIME DEFAULT NOW(),
       FOREIGN KEY (rent_owner) REFERENCES users(username)
     );
     `);
