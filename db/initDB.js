@@ -86,17 +86,29 @@ const init = async () => {
     );
     `);
 
-    console.log('Creando tabla ratings');
+    console.log('Creando tabla owner_ratings');
     await connection.query(`
-    CREATE TABLE IF NOT EXISTS ratings(
+    CREATE TABLE IF NOT EXISTS owner_ratings(
       rating_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       owner_id VARCHAR(20) NOT NULL,
-      tenant_id VARCHAR(20) NOT NULL,
       renting_id INT UNSIGNED NOT NULL,
       rating INT UNSIGNED NOT NULL,
       comments VARCHAR(200) NOT NULL,
       createdAt DATETIME NOT NULL DEFAULT NOW(),
       FOREIGN KEY (owner_id) REFERENCES users(username),
+      FOREIGN KEY (renting_id) REFERENCES rentings(rent_id)
+    );
+    `);
+
+    console.log('Creando tabla tenant_ratings');
+    await connection.query(`
+    CREATE TABLE IF NOT EXISTS tenant_ratings(
+      rating_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+      tenant_id VARCHAR(20) NOT NULL,
+      renting_id INT UNSIGNED NOT NULL,
+      rating INT UNSIGNED NOT NULL,
+      comments VARCHAR(200) NOT NULL,
+      createdAt DATETIME NOT NULL DEFAULT NOW(),
       FOREIGN KEY (tenant_id) REFERENCES users(username),
       FOREIGN KEY (renting_id) REFERENCES rentings(rent_id)
     );
