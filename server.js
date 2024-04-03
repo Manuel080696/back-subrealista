@@ -60,6 +60,9 @@ const {
 const {
   getTenantRatings,
   getOwnerRatings,
+  getPendingRatings,
+  rateOwner,
+  rateTenant,
 } = require('./controllers/ratings/index.js');
 
 // Rutas usuarios
@@ -90,9 +93,9 @@ app.patch('/myrentals/:id/cancel', authUser, cancelRental); // Cancelar la petic
 // Rutas reseñas
 app.get('/users/:username/ratings/rentings', getTenantRatings); // Ver valoraciones como inquilino de un perfil
 app.get('/users/:username/ratings/rentals', getOwnerRatings); // Ver valoraciones como dueño de un perfil
-app.get('/users/:username/ratings/pending', authUser); // Ver valoraciones propias pendientes
-app.post('/myrentals/:id/rate', authUser); // Postear valoraciones como inquilino
-app.post('/myrentings/:id/rate', authUser); // Postear valoraciones como dueño
+app.get('/users/:username/ratings/pending', authUser, getPendingRatings); // Ver valoraciones pendientes de enviar
+app.post('/myrentals/:id/rate', authUser, rateOwner); // Postear valoraciones como inquilino hacia casero
+app.post('/myrentings/:id/rate', authUser, rateTenant); // Postear valoraciones como casero hacia inquilino
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));
