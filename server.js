@@ -56,6 +56,15 @@ const {
   cancelRental,
 } = require('./controllers/rentals/index.js');
 
+// Controllers reseñas
+const {
+  getTenantRatings,
+  getOwnerRatings,
+  getPendingRatings,
+  rateOwner,
+  rateTenant,
+} = require('./controllers/ratings/index.js');
+
 // Rutas usuarios
 app.post('/register', createNewUser); //registro
 app.post('/validate', validateUser); //activacion
@@ -80,6 +89,13 @@ app.get('/myrentings', authUser, myRentings); // Ver estado de peticiones recibi
 app.get('/myrentings/:id', authUser, myRentingsId); // Ves estado individual de peticiones recibidas
 app.patch('/myrentings/:id', authUser, manageRentings); // Aceptar/rechazar la reserva como dueño
 app.patch('/myrentals/:id/cancel', authUser, cancelRental); // Cancelar la peticion de reserva como interesado
+
+// Rutas reseñas
+app.get('/users/:username/ratings/rentings', getTenantRatings); // Ver valoraciones como inquilino de un perfil
+app.get('/users/:username/ratings/rentals', getOwnerRatings); // Ver valoraciones como dueño de un perfil
+app.get('/users/:username/ratings/pending', authUser, getPendingRatings); // Ver valoraciones pendientes de enviar
+app.post('/myrentals/:id/rate', authUser, rateOwner); // Postear valoraciones como inquilino hacia casero
+app.post('/myrentings/:id/rate', authUser, rateTenant); // Postear valoraciones como casero hacia inquilino
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));
