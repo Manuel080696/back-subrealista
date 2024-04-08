@@ -1,3 +1,4 @@
+const { generateError } = require('../../helpers/generateError.js');
 const getPool = require('../../getDB.js');
 
 const postRental = async (
@@ -7,6 +8,13 @@ const postRental = async (
   rental_end
 ) => {
   let connection = await getPool();
+
+  if (rental_end > rental_start) {
+    throw generateError(
+      'No puedes elegir una fecha de salida anterior a la fecha de entrada',
+      400
+    );
+  }
 
   const [owner] = await connection.query(
     `
