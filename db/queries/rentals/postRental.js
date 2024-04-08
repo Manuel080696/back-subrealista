@@ -1,4 +1,4 @@
-const { generateError } = require('../../helpers/generateError.js');
+const { generateError } = require('../../../helpers/generateError.js');
 const getPool = require('../../getDB.js');
 
 const postRental = async (
