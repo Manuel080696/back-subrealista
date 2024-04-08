@@ -8,6 +8,7 @@ const updateRent = async (
   rent_price,
   rent_location,
   rent_id,
+  rent_cover,
   rent_owner
 ) => {
   let connection;
@@ -31,14 +32,17 @@ const updateRent = async (
       setClauses.push('rent_title = ?');
       values.push(rent_title);
     }
+
     if (rent_type !== undefined && rent_type !== null && rent_type !== '') {
       setClauses.push('rent_type = ?');
       values.push(rent_type);
     }
+
     if (rent_rooms !== undefined && rent_rooms !== null && rent_rooms !== '') {
       setClauses.push('rent_rooms = ?');
       values.push(rent_rooms);
     }
+
     if (
       rent_description !== undefined &&
       rent_description !== null &&
@@ -47,10 +51,12 @@ const updateRent = async (
       setClauses.push('rent_description = ?');
       values.push(rent_description);
     }
+
     if (rent_price !== undefined && rent_price !== null && rent_price !== '') {
       setClauses.push('rent_price = ?');
       values.push(rent_price);
     }
+
     if (
       rent_location !== undefined &&
       rent_location !== null &&
@@ -58,6 +64,11 @@ const updateRent = async (
     ) {
       setClauses.push('rent_location = ?');
       values.push(rent_location);
+    }
+
+    if (rent_cover !== undefined && rent_cover !== null && rent_cover !== '') {
+      setClauses.push('rent_cover = ?');
+      values.push(rent_cover);
     }
 
     const sql = ` UPDATE rentings SET ${setClauses.join(', ')} WHERE rent_id = ? `;

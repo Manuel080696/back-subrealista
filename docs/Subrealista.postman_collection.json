@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"antoniorondanvlc@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"raw": "{\r\n    \"email\": \"toni@email.com\",\r\n    \"password\": \"Pass1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,13 +106,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/kaysera0",
+							"raw": "{{URL}}/users/Toni",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								"kaysera0"
+								"Toni"
 							]
 						}
 					},
@@ -133,22 +133,49 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"pacote@gmail.com\",\r\n    \"username\":\"kaysera0\",\r\n    \"bio\":\"huelo pies\",\r\n    \"address\":\"asdasdasd\",\r\n    \"password\":\"password\"\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "toni@email.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Paco",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "test bio",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "test address",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pass1234",
+									"type": "text"
+								},
+								{
+									"key": "profilePic",
+									"type": "file",
+									"src": [],
+									"disabled": true
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{URL}}/users/kaysera",
+							"raw": "{{URL}}/users/Toni",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								"kaysera"
+								"Toni"
 							]
 						}
 					},
@@ -160,13 +187,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/kaysera0/rentings",
+							"raw": "{{URL}}/users/Toni/rentings",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								"kaysera0",
+								"Toni",
 								"rentings"
 							]
 						}
@@ -246,13 +273,44 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"rent_title\": \"prueba\",\r\n    \"rent_type\": \"Piso\",\r\n    \"rent_rooms\": \"4\",\r\n    \"rent_description\": \"prueba\",\r\n    \"rent_price\": \"450\",\r\n    \"rent_location\": \"Balears\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "rent_title",
+									"value": "prueba",
+									"type": "text"
+								},
+								{
+									"key": "rent_type",
+									"value": "Piso",
+									"type": "text"
+								},
+								{
+									"key": "rent_rooms",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "rent_description",
+									"value": "prueba",
+									"type": "text"
+								},
+								{
+									"key": "rent_price",
+									"value": "450",
+									"type": "text"
+								},
+								{
+									"key": "rent_location",
+									"value": "Balears",
+									"type": "text"
+								},
+								{
+									"key": "rent_cover",
+									"type": "file",
+									"src": "/C:/Users/Kaysera/Pictures/Screenshots/Captura de pantalla 2023-09-11 021514.png"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{URL}}/new-renting",
@@ -281,22 +339,53 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"rent_title\": \"Prueba de cambio\",\r\n    \"rent_type\": \"Piso\",\r\n    \"rent_rooms\": \"3\",\r\n    \"rent_description\": \"Prueba de cambio\",\r\n    \"rent_price\": \"3500\",\r\n    \"rent_location\": \"Balears\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "rent_title",
+									"value": "Prueba de cambio",
+									"type": "text"
+								},
+								{
+									"key": "rent_type",
+									"value": "Piso",
+									"type": "text"
+								},
+								{
+									"key": "rent_rooms",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "rent_description",
+									"value": "Prueba de cambio",
+									"type": "text"
+								},
+								{
+									"key": "rent_price",
+									"value": "3500",
+									"type": "text"
+								},
+								{
+									"key": "rent_location",
+									"value": "Balears",
+									"type": "text"
+								},
+								{
+									"key": "rent_cover",
+									"type": "file",
+									"src": []
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{URL}}/rentings/1",
+							"raw": "{{URL}}/rentings/7",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"rentings",
-								"1"
+								"7"
 							]
 						}
 					},
@@ -429,13 +518,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/myrentals/1",
+							"raw": "{{URL}}/myrentals/9",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"myrentals",
-								"1"
+								"9"
 							]
 						}
 					},
@@ -562,6 +651,51 @@
 								"myrentals",
 								"1",
 								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating Queries",
+			"item": [
+				{
+					"name": "getTenantRatings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/kaysera/ratings/rentings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"kaysera",
+								"ratings",
+								"rentings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOwnerRatings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/kaysera/ratings/rentals",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"kaysera",
+								"ratings",
+								"rentals"
 							]
 						}
 					},

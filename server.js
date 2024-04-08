@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 const { port } = require('./config.js');
@@ -24,6 +25,13 @@ const { authUser } = require('./middlewares/auth.js');
 
 // Middleware para JSON
 app.use(express.json());
+
+// Middleware para subida de archivos
+app.use(fileUpload());
+
+// Middleware para cargar imagenes
+app.use('/uploads/profile_pics', express.static('./uploads/profile_pics'));
+app.use('/uploads/rent_images', express.static('./uploads/rent_images'));
 
 // Controllers usuarios
 const {
