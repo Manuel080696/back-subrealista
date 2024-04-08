@@ -1,4 +1,8 @@
 const { createRenting } = require('../../db/queries/rentings/createRenting.js');
+const path = require('path');
+const { randomUUID } = require('crypto');
+const { createPathIfNotExists } = require('../../helpers/generateError.js');
+const sharp = require('sharp');
 const jwt = require('jsonwebtoken');
 
 const newRenting = async (req, res, next) => {
@@ -6,6 +10,37 @@ const newRenting = async (req, res, next) => {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, process.env.SECRET);
     const username = decodedToken.username;
+
+    const HOST =
+      'http://' +
+      (process.env.HOST || 'localhost') +
+      ':' +
+      (process.env.PORT || 3000);
+
+    //Procesado imagenes
+    const uuid = randomUUID();
+    const directory = path.join(
+      __dirname,
+      '..',
+      '..',
+      'uploads',
+      'rent_images'
+    );
+    await createPathIfNotExists(directory);
+    const imageName = req.files.rent_cover.name;
+    const ext = path.extname(imageName).toLowerCase();
+    const newName = `${uuid}${ext}`;
+    const imgUrl = `${HOST}/uploads/rent_images/${newName}`;
+
+    if (req.files && req.files.rent_cover) {
+      await sharp(req.files.rent_cover.data)
+        .resize(1920, 1080)
+        .toFile(path.join(directory, newName), (err) => {
+          if (err) {
+            console.error(err);
+          }
+        });
+    }
 
     const {
       rent_title,
@@ -23,6 +58,7 @@ const newRenting = async (req, res, next) => {
       rent_description,
       rent_price,
       rent_location,
+      imgUrl,
       username
     );
 
@@ -36,6 +72,7 @@ const newRenting = async (req, res, next) => {
         rent_description,
         rent_price,
         rent_location,
+        imgUrl,
       },
       message: `${rent_title} se ha publicado con éxito.`,
     });

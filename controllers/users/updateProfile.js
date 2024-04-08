@@ -17,18 +17,22 @@ const updateProfile = async (req, res, next) => {
     ':' +
     (process.env.PORT || 3000);
 
-  console.log(req.body);
-
   //Procesado imagenes
-  const uuid = randomUUID();
-  const directory = path.join(__dirname, '..', '..', 'uploads', 'profile_pics');
-  await createPathIfNotExists(directory);
-  const imageName = req.files.profilePic.name;
-  const ext = path.extname(imageName).toLowerCase();
-  const newName = `${uuid}${ext}`;
-  const imgUrl = `${HOST}/uploads/profile_pics/${newName}`;
-
+  let imgUrl;
   if (req.files && req.files.profilePic) {
+    const uuid = randomUUID();
+    const directory = path.join(
+      __dirname,
+      '..',
+      '..',
+      'uploads',
+      'profile_pics'
+    );
+    await createPathIfNotExists(directory);
+    const imageName = req.files.profilePic.name;
+    const ext = path.extname(imageName).toLowerCase();
+    const newName = `${uuid}${ext}`;
+    imgUrl = `${HOST}/uploads/profile_pics/${newName}`;
     await sharp(req.files.profilePic.data)
       .resize(350, 350)
       .toFile(path.join(directory, newName), (err) => {
