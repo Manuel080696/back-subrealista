@@ -15,6 +15,7 @@ const getMyRentals = async (rental_tenant) => {
       rentings.rent_description,
       rentings.rent_location,
       rentings.rent_price,
+      rentings.rent_cover,
       rentals.rental_start,
       rentals.rental_end,
       rentals.rental_status
