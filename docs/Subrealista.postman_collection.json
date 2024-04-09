@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"toni@email.com\",\r\n    \"password\": \"Pass1234\"\r\n}",
+							"raw": "{\r\n    \"email\": \"toni.rondan17@gmail.com\",\r\n    \"password\": \"Pass1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -308,7 +308,72 @@
 								{
 									"key": "rent_cover",
 									"type": "file",
-									"src": "/C:/Users/Kaysera/Pictures/Screenshots/Captura de pantalla 2023-09-11 021514.png"
+									"src": "/C:/Users/Kaysera/Pictures/NBX_Snapshot_2023-04-26_17-03-14-937.png"
+								},
+								{
+									"key": "elevator",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "near_beach",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "near_mountain",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "hairdryer",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "washing_machine",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "ac",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "smoke_detector",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "first_kit_aid",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "wifi",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "refrigerator",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "freezer",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "toaster",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "fully_equipped",
+									"value": "0",
+									"type": "text"
 								}
 							]
 						},
@@ -375,6 +440,71 @@
 									"key": "rent_cover",
 									"type": "file",
 									"src": []
+								},
+								{
+									"key": "elevator",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "near_beach",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "near_mountain",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "hairdryer",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "washing_machine",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "ac",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "smoke_detector",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "first_kit_aid",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "wifi",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "refrigerator",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "freezer",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "toaster",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "fully_equipped",
+									"value": "0",
+									"type": "text"
 								}
 							]
 						},
@@ -423,6 +553,58 @@
 					"request": {
 						"method": "GET",
 						"header": [],
+						"url": {
+							"raw": "{{URL}}/rentings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rentings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postRentImages",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image1",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image2",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image3",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image4",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
 						"url": {
 							"raw": "{{URL}}/rentings/1",
 							"host": [
