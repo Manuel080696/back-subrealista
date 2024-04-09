@@ -49,7 +49,36 @@ const newRenting = async (req, res, next) => {
       rent_description,
       rent_price,
       rent_location,
+      elevator,
+      near_beach,
+      near_mountain,
+      hairdryer,
+      washing_machine,
+      ac,
+      smoke_detector,
+      first_kit_aid,
+      wifi,
+      refrigerator,
+      freezer,
+      toaster,
+      fully_equipped,
     } = req.body;
+
+    const services = {
+      elevator,
+      near_beach,
+      near_mountain,
+      hairdryer,
+      washing_machine,
+      ac,
+      smoke_detector,
+      first_kit_aid,
+      wifi,
+      refrigerator,
+      freezer,
+      toaster,
+      fully_equipped,
+    };
 
     const rent_id = await createRenting(
       rent_title,
@@ -59,6 +88,7 @@ const newRenting = async (req, res, next) => {
       rent_price,
       rent_location,
       imgUrl,
+      services,
       username
     );
 

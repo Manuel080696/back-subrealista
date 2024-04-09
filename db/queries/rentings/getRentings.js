@@ -17,6 +17,7 @@ const getRentings = async () => {
       r.rent_location,
       r.rent_cover
       FROM rentings r
+      WHERE active=true
       ORDER BY r.createdAt DESC`);
 
     return result;
