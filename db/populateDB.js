@@ -16,7 +16,7 @@ const populate = async () => {
         ('Manu','manu@email.com','${hashedPass}', 1),
         ('Oscar','oscar@email.com','${hashedPass}', 1),
         ('Yese','yese@email.com','${hashedPass}', 1),
-        ('Toni','toni@email.com','${hashedPass}', 1),
+        ('Toni','toni.rondan17@gmail.com','${hashedPass}', 1),
         ('Paco','paco@email.com','${hashedPass}', 1),
         ('Elena','elena@email.com','${hashedPass}', 1),
         ('Selene','selene@email.com','${hashedPass}', 1),
