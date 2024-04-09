@@ -9,6 +9,7 @@ const updateRent = async (
   rent_location,
   rent_id,
   rent_cover,
+  services,
   rent_owner
 ) => {
   let connection;
@@ -76,6 +77,46 @@ const updateRent = async (
     values.push(rent_id);
 
     const [{ result }] = await connection.query(sql, values);
+
+    const {
+      elevator,
+      near_beach,
+      near_mountain,
+      hairdryer,
+      washing_machine,
+      ac,
+      smoke_detector,
+      first_kit_aid,
+      wifi,
+      refrigerator,
+      freezer,
+      toaster,
+      fully_equipped,
+    } = services;
+
+    const [rent_services] = await connection.query(
+      `
+         UPDATE services
+         SET elevator=?, near_beach=?, near_mountain=?, hairdryer=?, washing_machine=?, ac=?, smoke_detector=?, first_kit_aid=?, wifi=?, refrigerator=?, freezer=?, toaster=?, fully_equipped=?
+         WHERE renting_id=?
+      `,
+      [
+        elevator,
+        near_beach,
+        near_mountain,
+        hairdryer,
+        washing_machine,
+        ac,
+        smoke_detector,
+        first_kit_aid,
+        wifi,
+        refrigerator,
+        freezer,
+        toaster,
+        fully_equipped,
+        rent_id,
+      ]
+    );
 
     return result;
   } catch (error) {

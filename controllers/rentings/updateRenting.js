@@ -12,6 +12,37 @@ const updateRenting = async (req, res, next) => {
     const rent_owner = decodedToken.username;
     const rent_id = req.params.id;
     let imgUrl;
+    const {
+      elevator,
+      near_beach,
+      near_mountain,
+      hairdryer,
+      washing_machine,
+      ac,
+      smoke_detector,
+      first_kit_aid,
+      wifi,
+      refrigerator,
+      freezer,
+      toaster,
+      fully_equipped,
+    } = req.body;
+
+    const services = {
+      elevator,
+      near_beach,
+      near_mountain,
+      hairdryer,
+      washing_machine,
+      ac,
+      smoke_detector,
+      first_kit_aid,
+      wifi,
+      refrigerator,
+      freezer,
+      toaster,
+      fully_equipped,
+    };
 
     const HOST =
       'http://' +
@@ -63,6 +94,7 @@ const updateRenting = async (req, res, next) => {
       newData.rent_location,
       rent_id,
       imgUrl,
+      services,
       rent_owner
     );
 

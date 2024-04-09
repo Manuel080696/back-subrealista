@@ -50,6 +50,7 @@ const {
   getAllRentings,
   filteredSearch,
   newRenting,
+  postRentImages,
   updateRenting,
   deleteRenting,
   getSingleRental,
@@ -88,6 +89,7 @@ app.get('/', getAllRentings); // Ver todos
 app.get('/rentings/:id', getSingleRental); // Ver un alojamiento
 app.get('/search', filteredSearch); // Ver por filtros
 app.post('/new-renting', authUser, newRenting); // Postear nuevo
+app.post('/rentings/:id', authUser, postRentImages); // Postear imagenes del alojamiento
 app.put('/rentings/:id', authUser, updateRenting); // Editar alojamiento
 app.delete('/rentings/:id', authUser, deleteRenting); // Borrar alojamiento
 
