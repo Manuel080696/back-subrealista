@@ -29,6 +29,8 @@ app.use(express.json());
 // Middleware para subida de archivos
 app.use(fileUpload());
 
+// Testeo para Yese
+
 // Middleware para cargar imagenes
 app.use('/uploads/profile_pics', express.static('./uploads/profile_pics'));
 app.use('/uploads/rent_images', express.static('./uploads/rent_images'));
