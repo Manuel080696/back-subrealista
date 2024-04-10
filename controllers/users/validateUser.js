@@ -3,7 +3,7 @@ const checkRegistrationCode = require('../../db/queries/users/checkRegistrationC
 
 const validateUser = async (req, res) => {
   try {
-    const { registrationCode } = req.body;
+    const { registrationCode } = req.params;
     const user = await checkRegistrationCode(registrationCode);
     if (!user) return res.status(401).json({ error: 'Código invalido' });
 

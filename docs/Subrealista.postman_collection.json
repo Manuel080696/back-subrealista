@@ -40,22 +40,20 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"registrationCode\": \"registrationCode\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{URL}}/validate",
+							"raw": "{{URL}}/validate/:registrationCode",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"validate"
+								"validate",
+								":registrationCode"
+							],
+							"variable": [
+								{
+									"key": "registrationCode",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -214,6 +212,24 @@
 							"raw": "{{URL}}",
 							"host": [
 								"{{URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSingleRental",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/rentings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rentings",
+								"1"
 							]
 						}
 					},
@@ -390,6 +406,58 @@
 					"response": []
 				},
 				{
+					"name": "postRentImages",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image1",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image2",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image3",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "image4",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/rentings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"rentings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "updateRenting",
 					"request": {
 						"auth": {
@@ -535,76 +603,6 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "{{URL}}/rentings/1",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"rentings",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getSingleRental",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/rentings/1",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"rentings",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "postRentImages",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{JWT}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image1",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "image2",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "image3",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "image4",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
 						"url": {
 							"raw": "{{URL}}/rentings/1",
 							"host": [

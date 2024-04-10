@@ -29,28 +29,28 @@ const populate = async () => {
     console.log('Rellenando tabla rentings');
     await connection.query(
       `
-        INSERT INTO rentings (rent_owner, rent_title, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_cover)
+        INSERT INTO rentings (rent_owner, rent_title, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_address, rent_cover)
         VALUES 
-        ('Manu', 'Piso en playa', 'Piso', 4, 'Piso cerca de la playa', 350, 'Andalucia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Manu', 'Chalet de campo', 'Chalet', 3, 'Chalet de campo', 350, 'Aragon', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Oscar', 'Piso en playa', 'Piso', 2, 'Piso cerca de la playa', 350, 'Asturias', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Oscar', 'Casa rural', 'Casa', 7, 'Casa rural', 350, 'Balears', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Yese', 'Chalet de campo', 'Chalet', 2, 'Chalet de campo', 350, 'Canarias', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Yese', 'Piso en playa', 'Piso', 5, 'Piso cerca de la playa', 350, 'Cantabria', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Toni', 'Apartamento rural', 'Apartamento', 7, 'Apartamento rural', 350, 'Castilla y Leon', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Toni', 'Chalet de campo', 'Chalet', 3, 'Chalet de campo', 350, 'Castilla La Mancha', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Paco', 'Piso en playa', 'Piso', 1, 'Piso cerca de la playa', 350, 'Cataluña', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Paco', 'Casa rural', 'Casa', 8, 'Casa rural', 350, 'Comunidad Valenciana', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Elena', 'Chalet de campo', 'Chalet', 5, 'Chalet de campo', 350, 'Extremadura', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Elena', 'Piso en playa', 'Piso', 3, 'Piso cerca de la playa', 350, 'Galicia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Selene', 'Casa rural', 'Casa', 5, 'Casa rural', 350, 'Madrid', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Selene', 'Chalet de campo', 'Chalet', 3, 'Chalet de campo', 350, 'Murcia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Esteban', 'Apartamento rural', 'Apartamento', 9, 'Apartamento rural', 350, 'Navarra', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Esteban', 'Piso en playa', 'Piso', 6, 'Piso cerca de la playa', 350, 'Pais Vasco', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Maria', 'Casa rural', 'Casa', 6, 'Casa rural', 350, 'Rioja', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Maria', 'Apartamento rural', 'Apartamento', 3, 'Apartamento rural', 350, 'Ceuta', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Susana', 'Casa rural', 'Casa', 2, 'Casa rural', 350, 'Melilla', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
-        ('Susana', 'Apartamento rural', 'Apartamento', 1, 'Apartamento rural', 350, 'Galicia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg')
+        ('Manu', 'Piso en playa', 'Piso', 4, 'Piso cerca de la playa', 350, 'Andalucia', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Manu', 'Chalet de campo', 'Chalet', 3, 'Chalet de campo', 350, 'Aragon', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Oscar', 'Piso en playa', 'Piso', 2, 'Piso cerca de la playa', 350, 'Asturias', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Oscar', 'Casa rural', 'Casa', 7, 'Casa rural', 350, 'Balears', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Yese', 'Chalet de campo', 'Chalet', 2, 'Chalet de campo', 350, 'Canarias', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Yese', 'Piso en playa', 'Piso', 5, 'Piso cerca de la playa', 350, 'Cantabria', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Toni', 'Apartamento rural', 'Apartamento', 7, 'Apartamento rural', 350, 'Castilla y Leon', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Toni', 'Chalet de campo', 'Chalet', 3, 'Chalet de campo', 350, 'Castilla La Mancha', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Paco', 'Piso en playa', 'Piso', 1, 'Piso cerca de la playa', 350, 'Cataluña', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Paco', 'Casa rural', 'Casa', 8, 'Casa rural', 350, 'Comunidad Valenciana', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Elena', 'Chalet de campo', 'Chalet', 5, 'Chalet de campo', 350, 'Extremadura', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Elena', 'Piso en playa', 'Piso', 3, 'Piso cerca de la playa', 350, 'Galicia', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Selene', 'Casa rural', 'Casa', 5, 'Casa rural', 350, 'Madrid', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Selene', 'Chalet de campo', 'Chalet', 3, 'Chalet de campo', 350, 'Murcia', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Esteban', 'Apartamento rural', 'Apartamento', 9, 'Apartamento rural', 350, 'Navarra', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Esteban', 'Piso en playa', 'Piso', 6, 'Piso cerca de la playa', 350, 'Pais Vasco', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Maria', 'Casa rural', 'Casa', 6, 'Casa rural', 350, 'Rioja', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Maria', 'Apartamento rural', 'Apartamento', 3, 'Apartamento rural', 350, 'Ceuta', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Susana', 'Casa rural', 'Casa', 2, 'Casa rural', 350, 'Melilla', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg'),
+        ('Susana', 'Apartamento rural', 'Apartamento', 1, 'Apartamento rural', 350, 'Galicia', 'Calle Inventada 32, Piso 3 Puerta 4, 42069, Inventilandia', 'https://www.houseplans.net/news/wp-content/uploads/2023/07/57260-768.jpeg')
       `
     );
 

@@ -9,6 +9,12 @@ const createNewUser = async (req, res, next) => {
     const encryptedPassword = await bcrypt.hash(password, 10);
     const registrationCode = crypto.randomUUID();
 
+    const HOST =
+      'http://' +
+      (process.env.HOST || 'localhost') +
+      ':' +
+      (process.env.PORT || 3000);
+
     const userId = await newUser({
       ...req.body,
       password: encryptedPassword,
@@ -18,7 +24,7 @@ const createNewUser = async (req, res, next) => {
     await sendMail({
       to: email,
       subject: 'Verifica tu correo electrónico',
-      HTMLPart: `Por favor, introduce el siguiente código para validar tu cuenta.<br/>${registrationCode}`,
+      HTMLPart: `Por favor, <a href='${HOST}/validate/${registrationCode}'>haz click aquí</a> para validar tu cuenta.<br/> En caso de no funcionar, por favor introduce este código manualmente: ${registrationCode}`,
     });
 
     res.status(201).send({

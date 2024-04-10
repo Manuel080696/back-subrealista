@@ -9,8 +9,6 @@ const activateUser = async (username) => {
       [username]
     );
 
-    console.log('Usuario activado:');
-
     return user;
   } catch (error) {
     console.error('Error al actualizar el usuario:', error);

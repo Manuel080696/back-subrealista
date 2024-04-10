@@ -7,18 +7,19 @@ const getRentings = async () => {
     connection = await getPool();
 
     const [result] = await connection.query(`
-      SELECT r.rent_id,
-      r.rent_owner,
-      r.rent_title,
-      r.rent_type,
-      r.rent_rooms,
-      r.rent_description,
-      r.rent_price,
-      r.rent_location,
-      r.rent_cover
-      FROM rentings r
+      SELECT rent_id,
+      rent_owner,
+      rent_title,
+      rent_type,
+      rent_rooms,
+      rent_description,
+      rent_price,
+      rent_location,
+      rent_address,
+      rent_cover
+      FROM rentings
       WHERE active=true
-      ORDER BY r.createdAt DESC`);
+      ORDER BY createdAt DESC`);
 
     return result;
   } finally {
