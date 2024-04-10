@@ -64,17 +64,6 @@ const init = async () => {
     );
     `);
 
-    console.log('Creando tabla favorites');
-    await connection.query(`
-    CREATE TABLE IF NOT EXISTS favorites(
-      favorites_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-      user_id VARCHAR(20) NOT NULL,
-      rent_id INT UNSIGNED NOT NULL,
-      FOREIGN KEY (user_id) REFERENCES users(username),
-      FOREIGN KEY (rent_id) REFERENCES rentings(rent_id)
-    );
-    `);
-
     console.log('Creando tabla rent_images');
     await connection.query(`
     CREATE TABLE IF NOT EXISTS rent_images(

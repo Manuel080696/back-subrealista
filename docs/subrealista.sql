@@ -45,14 +45,6 @@ CREATE TABLE IF NOT EXISTS rentals(
     FOREIGN KEY (rental_tenant) REFERENCES users(username)
 );
 
-CREATE TABLE IF NOT EXISTS favorites(
-	favorites_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    user_id VARCHAR(20) NOT NULL,
-    rent_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(username),
-    FOREIGN KEY (rent_id) REFERENCES rentings(rent_id)
-);
-
 CREATE TABLE IF NOT EXISTS rent_images(
 	rent_image_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     rent_id INT UNSIGNED NOT NULL,

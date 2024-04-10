@@ -72,15 +72,6 @@ const populate = async () => {
       `
     );
 
-    console.log('Rellenando tabla ravorites');
-    await connection.query(
-      `
-        INSERT INTO favorites (user_id, rent_id)
-        VALUES 
-        ('Manu', 3),('Oscar', 5),('Yese', 7),('Toni', 9)
-      `
-    );
-
     console.log('Rellenando tabla rent_images');
     await connection.query(
       `
