@@ -10,6 +10,7 @@ const getProfile = async (username) => {
       u.username,
       u.profilePic,
       u.bio,
+      u.address,
       u.createdAt,
       u.modifiedAt,
       u.role,
