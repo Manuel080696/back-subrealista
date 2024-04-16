@@ -6,7 +6,6 @@ const getRental = async (id) => {
 
   try {
     connection = await getPool();
-    let finalResult = [];
 
     const [result] = await connection.query(
       `
@@ -17,16 +16,12 @@ const getRental = async (id) => {
       [id]
     );
 
-    finalResult.push([result[0]]);
-
     const [images] = await connection.query(
       `
       SELECT rent_image FROM rent_images WHERE rent_id = ?
       `,
       [id]
     );
-
-    finalResult.push([...images]);
 
     const [services] = await connection.query(
       `
@@ -35,11 +30,20 @@ const getRental = async (id) => {
       [id]
     );
 
-    finalResult.push(services);
+    const [rentals] = await connection.query(
+      `
+        SELECT rental_start, rental_end
+        FROM rentals
+        WHERE rental_rent_id=?
+      `,
+      [id]
+    );
 
     if (result.length === 0) {
       throw generateError('Este alquiler no existe', 404);
     }
+
+    const finalResult = [result[0], images, services, rentals];
 
     return finalResult;
   } finally {
