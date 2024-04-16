@@ -241,7 +241,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/search?rent_location=&min_price=&max_price=&min_rooms=&max_rooms=",
+							"raw": "{{URL}}/search?rent_location=&min_price=&max_price=&min_rooms=&max_rooms=&min_date=&max_date=",
 							"host": [
 								"{{URL}}"
 							],
@@ -267,6 +267,14 @@
 								},
 								{
 									"key": "max_rooms",
+									"value": ""
+								},
+								{
+									"key": "min_date",
+									"value": ""
+								},
+								{
+									"key": "max_date",
 									"value": ""
 								}
 							]
