@@ -6,6 +6,7 @@ const getRental = async (id) => {
 
   try {
     connection = await getPool();
+    let finalResult = [];
 
     const [result] = await connection.query(
       `
@@ -16,6 +17,8 @@ const getRental = async (id) => {
       [id]
     );
 
+    finalResult.push([result[0]]);
+
     const [images] = await connection.query(
       `
       SELECT rent_image FROM rent_images WHERE rent_id = ?
@@ -23,11 +26,20 @@ const getRental = async (id) => {
       [id]
     );
 
+    finalResult.push([...images]);
+
+    const [services] = await connection.query(
+      `
+      SELECT elevator, near_beach, near_mountain, hairdryer, washing_machine, ac, smoke_detector, first_kit_aid, wifi, refrigerator, freezer, toaster, fully_equipped FROM services WHERE renting_id = ?
+      `,
+      [id]
+    );
+
+    finalResult.push(services);
+
     if (result.length === 0) {
       throw generateError('Este alquiler no existe', 404);
     }
-
-    const finalResult = [result[0], images];
 
     return finalResult;
   } finally {

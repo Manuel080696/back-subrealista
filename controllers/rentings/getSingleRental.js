@@ -6,7 +6,9 @@ const getSinglerentings = async (req, res, next) => {
     const rentings = await getRental(id);
     res.send({
       status: 'ok',
-      data: rentings,
+      data: rentings[0],
+      images: rentings[1],
+      services: rentings[2],
     });
   } catch (error) {
     next(error);
