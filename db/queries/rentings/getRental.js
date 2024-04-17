@@ -35,6 +35,7 @@ const getRental = async (id) => {
         SELECT rental_start, rental_end
         FROM rentals
         WHERE rental_rent_id=?
+        AND rental_status='Aceptado'
       `,
       [id]
     );
