@@ -43,6 +43,8 @@ const {
   getUserProfile,
   updateProfile,
   getRentings,
+  sendEmailPassword,
+  changePassword,
 } = require('./controllers/users/index.js');
 
 // Controllers alquileres
@@ -80,6 +82,8 @@ const {
 app.post('/register', createNewUser); //registro
 app.post('/validate/:registrationCode', validateUser); //activacion
 app.post('/login', loginUser); //login
+app.post('/reset-password', sendEmailPassword); //Email para cambiar contraseña
+app.post('/change-password', changePassword); //Hacer cambio de contraseña
 app.get('/users/:username', getUserProfile); //perfil
 app.put('/users/:username', authUser, updateProfile); //actualizar
 app.get('/users/:username/rentings', getRentings); //ver pisos

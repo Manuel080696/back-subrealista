@@ -99,6 +99,75 @@
 					"response": []
 				},
 				{
+					"name": "sendEmailPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "toni.rondan17@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/reset-password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "resetPassCode",
+									"value": "380b2d94-3e2b-40b5-9eb8-a9c5f7c29707",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "toni.rondan17@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "newPass",
+									"value": "Pass12345",
+									"type": "text"
+								},
+								{
+									"key": "repeatPass",
+									"value": "Pass12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/change-password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getProfile",
 					"request": {
 						"method": "GET",

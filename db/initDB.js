@@ -25,6 +25,7 @@ const init = async () => {
       createdAt DATETIME DEFAULT NOW(),
       modifiedAt DATETIME,
       registrationCode VARCHAR(100),
+      resetPassCode VARCHAR(100),
       role ENUM('admin','user') DEFAULT 'user'	
     );
     `);

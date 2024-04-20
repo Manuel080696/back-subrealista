@@ -4,6 +4,8 @@ const loginUser = require('./loginUser.js');
 const getUserProfile = require('./getUserProfile.js');
 const updateProfile = require('./updateProfile.js');
 const getRentings = require('./getRentings.js');
+const sendEmailPassword = require('./sendEmailPassword.js');
+const changePassword = require('./changePassword.js');
 
 module.exports = {
   createNewUser,
@@ -12,4 +14,6 @@ module.exports = {
   getUserProfile,
   updateProfile,
   getRentings,
+  sendEmailPassword,
+  changePassword,
 };
