@@ -12,17 +12,6 @@ async function getDB() {
       password: MYSQL_PASSWORD,
       timezone: 'Z',
     });
-
-    await connection.query('CREATE DATABASE IF NOT EXISTS subrealista;');
-
-    pool = mysql.createPool({
-      connectionLimit: 10,
-      host: MYSQL_HOST,
-      user: MYSQL_USER,
-      password: MYSQL_PASSWORD,
-      database: MYSQL_DATABASE,
-      timezone: 'local',
-    });
   }
 
   return pool;
