@@ -38,7 +38,7 @@ const postRentImages = async (req, res, next) => {
 
       if (req.files && array[index]) {
         await sharp(array[index].data)
-          .resize(1920, 1080)
+          .webp({ effort: 6 })
           .toFile(path.join(directory, newName), (err) => {
             if (err) {
               console.error(err);

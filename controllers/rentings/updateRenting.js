@@ -66,7 +66,7 @@ const updateRenting = async (req, res, next) => {
       const newName = `${uuid}${ext}`;
       imgUrl = `${HOST}/uploads/rent_images/${newName}`;
       await sharp(req.files.rent_cover.data)
-        .resize(1920, 1080)
+        .webp({ effort: 6 })
         .toFile(path.join(directory, newName), (err) => {
           if (err) {
             console.error(err);

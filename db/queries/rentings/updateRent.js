@@ -25,7 +25,7 @@ const updateRent = async (
       [rent_owner]
     );
 
-    if (checkOwner[0].username != rent_owner) {
+    if (checkOwner[0].username !== rent_owner) {
       throw generateError(`¡Este alquiler no es tuyo!`, 403);
     }
 
