@@ -1,6 +1,10 @@
 {
   "name": "subrealista",
   "main": "server.js",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=8"
+  },
   "scripts": {
     "start": "nodemon start",
     "initDB": "node ./db/initDB.js",
