@@ -6,7 +6,7 @@ const mailjet = Mailjet.apiConnect(
 );
 
 async function sendMail({
-  fromEmail = process.env.MJ_EMAIL,
+  fromEmail = 'antoniorondanvlc@gmail.com',
   fromName = 'Admin Subrealista',
   to,
   subject,

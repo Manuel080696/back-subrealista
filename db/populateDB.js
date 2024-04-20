@@ -99,7 +99,7 @@ const populate = async () => {
         (4, 'http://localhost:3000/uploads/rent_images/baba3829-f035-4426-882d-6558bd822b96.jpeg'),
         (4, 'http://localhost:3000/uploads/rent_images/4c4b47c9-08c6-4713-a8b8-e10e62e99a8a.jpeg'),
         (4, 'http://localhost:3000/uploads/rent_images/e5380046-c60a-415d-8bf6-0f6c631f3671.jpeg'),
-        (4, 'http://localhost:3000/uploads/rent_images/26c3a405-2f0a-4cb1-b06c-f44e5156dfee.jpeg'),
+        (4, 'http://localhost:3000/uploads/rent_images/26c3a405-2f0a-4cb1-b06c-f44e5156dfee.jpeg')
       `
     );
 
