@@ -18,12 +18,7 @@ const postRentImages = async (req, res, next) => {
       ':' +
       (process.env.PORT || 3000);
 
-    const array = [
-      req.files.image1,
-      req.files.image2,
-      req.files.image3,
-      req.files.image4,
-    ];
+    const array = Object.values(req.files).slice();
 
     //Procesado imagenes
     for (let index = 0; index < array.length; index++) {

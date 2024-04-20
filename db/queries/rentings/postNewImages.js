@@ -13,7 +13,7 @@ const postNewImages = async (id, username, imgUrl) => {
       `,
       [id]
     );
-    const check = !checkOwner[0].rental_owner === username;
+    const check = checkOwner[0].rental_owner === username;
 
     if (check == false) {
       throw generateError(`No puedes subir fotos a este alquiler`, 401);
