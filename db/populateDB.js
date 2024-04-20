@@ -13,10 +13,10 @@ const populate = async () => {
       `
         INSERT INTO users (username, email, password, active)
         VALUES 
-        ('Manu','manu@email.com','${hashedPass}', 1),
-        ('Oscar','oscar@email.com','${hashedPass}', 1),
-        ('Yese','yese@email.com','${hashedPass}', 1),
-        ('Toni','toni.rondan17@gmail.com','${hashedPass}', 1),
+        ('Manu','konstantinoff080696@gmail.com','${hashedPass}', 1),
+        ('Oscar','negociominimoviable@gmail.com','${hashedPass}', 1),
+        ('Yese','yese.astarloa@email.com','${hashedPass}', 1),
+        ('Toni','antoniorondanvlc@gmail.com','${hashedPass}', 1),
         ('Paco','paco@email.com','${hashedPass}', 1),
         ('Elena','elena@email.com','${hashedPass}', 1),
         ('Selene','selene@email.com','${hashedPass}', 1),

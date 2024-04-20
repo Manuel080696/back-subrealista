@@ -6,7 +6,7 @@ const mailjet = Mailjet.apiConnect(
 );
 
 async function sendMail({
-  fromEmail = 'antoniorondanvlc@gmail.com',
+  fromEmail = process.env.MJ_EMAIL,
   fromName = 'Admin Subrealista',
   to,
   subject,
@@ -31,7 +31,7 @@ async function sendMail({
       ],
     });
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 }
 
