@@ -12,11 +12,7 @@ const postRentImages = async (req, res, next) => {
     const username = decodedToken.username;
     const { id } = req.params;
 
-    const HOST =
-      'http://' +
-      (process.env.HOST || 'localhost') +
-      ':' +
-      (process.env.PORT || 3000);
+    const HOST = process.env.HOST
 
     const array = Object.values(req.files).slice();
 

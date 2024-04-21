@@ -9,12 +9,6 @@ const createNewUser = async (req, res, next) => {
     const encryptedPassword = await bcrypt.hash(password, 10);
     const registrationCode = crypto.randomUUID();
 
-    const HOST =
-      'http://' +
-      (process.env.HOST || 'localhost') +
-      ':' +
-      (process.env.PORT || 3000);
-
     const userId = await newUser({
       ...req.body,
       password: encryptedPassword,

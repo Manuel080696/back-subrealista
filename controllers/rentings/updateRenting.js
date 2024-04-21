@@ -44,11 +44,7 @@ const updateRenting = async (req, res, next) => {
       fully_equipped,
     };
 
-    const HOST =
-      'http://' +
-      (process.env.HOST || 'localhost') +
-      ':' +
-      (process.env.PORT || 3000);
+    const HOST = process.env.HOST
 
     //Procesado imagenes
     if (req.files && req.files.rent_cover) {

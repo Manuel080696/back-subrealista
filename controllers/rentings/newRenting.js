@@ -11,11 +11,7 @@ const newRenting = async (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.SECRET);
     const username = decodedToken.username;
 
-    const HOST =
-      'http://' +
-      (process.env.HOST || 'localhost') +
-      ':' +
-      (process.env.PORT || 3000);
+    const HOST = process.env.HOST
 
     //Procesado imagenes
     const uuid = randomUUID();
