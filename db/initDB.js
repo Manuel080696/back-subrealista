@@ -2,16 +2,18 @@ require('dotenv').config();
 const getDB = require('./getDB.js');
 
 const init = async () => {
-  try {
-    const pool = await getDB();
+  let connection;
 
-    await pool.query('DROP DATABASE IF EXISTS subrealista;');
-    await pool.query('CREATE DATABASE IF NOT EXISTS subrealista;');
-    await pool.query('USE subrealista;');
+  try {
+    connection = await getDB();
+
+    await connection.query('DROP DATABASE IF EXISTS subrealista;');
+    await connection.query('CREATE DATABASE IF NOT EXISTS subrealista;');
+    await connection.query('USE subrealista;');
 
     console.log('Creando tablas');
     console.log('Creando tabla users');
-    await pool.query(`
+    await connection.query(`
     CREATE TABLE IF NOT EXISTS users(
       username VARCHAR(20) PRIMARY KEY UNIQUE NOT NULL,
       email VARCHAR(100) UNIQUE NOT NULL,
@@ -29,7 +31,7 @@ const init = async () => {
     `);
 
     console.log('Creando tabla rentings');
-    await pool.query(`
+    await connection.query(`
     CREATE TABLE IF NOT EXISTS rentings(
       rent_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
       rent_owner VARCHAR(20) NOT NULL,
@@ -48,7 +50,7 @@ const init = async () => {
     `);
 
     console.log('Creando tabla rentals');
-    await pool.query(`
+    await connection.query(`
     CREATE TABLE IF NOT EXISTS rentals(
       rental_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       rental_rent_id INT UNSIGNED NOT NULL,
@@ -64,7 +66,7 @@ const init = async () => {
     `);
 
     console.log('Creando tabla rent_images');
-    await pool.query(`
+    await connection.query(`
     CREATE TABLE IF NOT EXISTS rent_images(
       rent_image_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       rent_id INT UNSIGNED NOT NULL,
@@ -75,7 +77,7 @@ const init = async () => {
     `);
 
     console.log('Creando tabla owner_ratings');
-    await pool.query(`
+    await connection.query(`
     CREATE TABLE IF NOT EXISTS owner_ratings(
       rating_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       owner_id VARCHAR(20) NOT NULL,
@@ -89,7 +91,7 @@ const init = async () => {
     `);
 
     console.log('Creando tabla tenant_ratings');
-    await pool.query(`
+    await connection.query(`
     CREATE TABLE IF NOT EXISTS tenant_ratings(
       rating_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       tenant_id VARCHAR(20) NOT NULL,
@@ -103,7 +105,7 @@ const init = async () => {
     `);
 
     console.log('Creando tabla services');
-    await pool.query(`
+    await connection.query(`
     CREATE TABLE IF NOT EXISTS services(
       rent_equipment_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       renting_id INT UNSIGNED NOT NULL,
@@ -128,7 +130,7 @@ const init = async () => {
   } catch (error) {
     console.error(error);
   } finally {
-    if (pool) pool.release;
+    if (connection) connection.release;
     process.exit();
   }
 };
