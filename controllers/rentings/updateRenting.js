@@ -44,7 +44,7 @@ const updateRenting = async (req, res, next) => {
       fully_equipped,
     };
 
-    const HOST = process.env.HOST
+    const HOST = process.env.HOST;
 
     //Procesado imagenes
     if (req.files && req.files.rent_cover) {
