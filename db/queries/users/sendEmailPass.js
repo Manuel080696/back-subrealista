@@ -28,7 +28,7 @@ const sendEmailPass = async (email, resetPassCode) => {
     await sendMail({
       to: email,
       subject: 'Actualiza tu contraseña',
-      HTMLPart: `Para cambiar tu contraseña, por favor utiliza este código: ${resetPassCode}`,
+      HTMLPart: `Para cambiar tu contraseña, <a href='https://subrealista.alwaysdata.net/recovery/${registrationCode}'>haz click aquí</a> o utiliza este código: ${resetPassCode}`,
     });
   } catch (error) {
     console.log(error);

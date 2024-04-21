@@ -18,7 +18,7 @@ const createNewUser = async (req, res, next) => {
     await sendMail({
       to: email,
       subject: 'Verifica tu correo electrónico',
-      HTMLPart: `Por favor, <a href='${HOST}/validate/${registrationCode}'>haz click aquí</a> para validar tu cuenta.<br/> En caso de no funcionar, por favor introduce este código manualmente: ${registrationCode}`,
+      HTMLPart: `Por favor, <a href='https://subrealista.alwaysdata.net/validate/${registrationCode}'>haz click aquí</a> para validar tu cuenta.<br/> En caso de no funcionar, por favor introduce este código manualmente: ${registrationCode}`,
     });
 
     res.status(201).send({
