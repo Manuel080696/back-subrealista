@@ -7,9 +7,9 @@ const init = async () => {
   try {
     connection = await getDB();
 
-    await connection.query('DROP DATABASE IF EXISTS subrealista;');
-    await connection.query('CREATE DATABASE IF NOT EXISTS subrealista;');
-    await connection.query('USE subrealista;');
+    await connection.query(`DROP DATABASE IF EXISTS ${process.env.MYSQL_DATABASE}`);
+    await connection.query(`CREATE DATABASE ${process.env.MYSQL_DATABASE}`);
+    await connection.query(`USE ${process.env.MYSQL_DATABASE}`);
 
     console.log('Creando tablas');
     console.log('Creando tabla users');
