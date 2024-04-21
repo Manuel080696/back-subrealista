@@ -9,19 +9,37 @@ const getRental = async (id) => {
 
     const [result] = await connection.query(
       `
-      SELECT rent_owner, rent_title, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_address, rent_cover, createdAt
+      SELECT rent_owner, rent_title, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_address, createdAt
       FROM rentings
       WHERE rent_id= ?
         `,
       [id]
     );
 
-    const [images] = await connection.query(
+    let images = [];
+
+    const [cover] = await connection.query(
       `
-      SELECT rent_image FROM rent_images WHERE rent_id = ?
+        SELECT rent_cover AS rent_image FROM rentings WHERE rent_id=?
       `,
       [id]
     );
+
+    images.unshift(cover[0]);
+
+    const [rentImg] = await connection.query(
+      `
+      SELECT rent_image
+      FROM rent_images
+      WHERE rent_id = ?
+      `,
+      [id]
+    );
+
+    const array = Object.values(rentImg).slice();
+    for (let index = 0; index < array.length; index++) {
+      images.push(rentImg[index]);
+    }
 
     const [services] = await connection.query(
       `
