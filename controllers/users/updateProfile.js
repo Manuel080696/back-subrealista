@@ -11,7 +11,7 @@ const updateProfile = async (req, res, next) => {
   const token = req.headers.authorization;
   const decodedToken = jwt.verify(token, process.env.SECRET);
   const username = decodedToken.username;
-  const HOST = process.env.HOST
+  const HOST = 'https://subrealista.alwaysdata.net';
 
   //Procesado imagenes
   let imgUrl;

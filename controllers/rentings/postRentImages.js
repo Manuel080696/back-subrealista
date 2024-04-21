@@ -12,7 +12,7 @@ const postRentImages = async (req, res, next) => {
     const username = decodedToken.username;
     const { id } = req.params;
 
-    const HOST = process.env.HOST
+    const HOST = 'https://subrealista.alwaysdata.net';
 
     const array = Object.values(req.files).slice();
 
