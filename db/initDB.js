@@ -7,7 +7,9 @@ const init = async () => {
   try {
     connection = await getDB();
 
-    await connection.query(`DROP DATABASE IF EXISTS ${process.env.MYSQL_DATABASE}`);
+    await connection.query(
+      `DROP DATABASE IF EXISTS ${process.env.MYSQL_DATABASE}`
+    );
     await connection.query(`CREATE DATABASE ${process.env.MYSQL_DATABASE}`);
     await connection.query(`USE ${process.env.MYSQL_DATABASE}`);
 
@@ -81,11 +83,13 @@ const init = async () => {
     CREATE TABLE IF NOT EXISTS owner_ratings(
       rating_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       owner_id VARCHAR(20) NOT NULL,
+      tenant_id VARCHAR(20) NOT NULL,
       renting_id INT UNSIGNED NOT NULL,
       rating INT UNSIGNED NOT NULL,
       comments VARCHAR(200) NOT NULL,
       createdAt DATETIME NOT NULL DEFAULT NOW(),
       FOREIGN KEY (owner_id) REFERENCES users(username),
+      FOREIGN KEY (tenant_id) REFERENCES users(username),
       FOREIGN KEY (renting_id) REFERENCES rentings(rent_id)
     );
     `);
@@ -95,6 +99,7 @@ const init = async () => {
     CREATE TABLE IF NOT EXISTS tenant_ratings(
       rating_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
       tenant_id VARCHAR(20) NOT NULL,
+      owner_id VARCHAR(20) NOT NULL,
       renting_id INT UNSIGNED NOT NULL,
       rating INT UNSIGNED NOT NULL,
       comments VARCHAR(200) NOT NULL,
