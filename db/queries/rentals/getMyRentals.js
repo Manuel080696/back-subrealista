@@ -10,6 +10,7 @@ const getMyRentals = async (rental_tenant) => {
       `
       SELECT
       rentals.rental_id,
+      rentals.rental_rent_id,
       rentals.rental_owner,
       rentings.rent_title,
       rentings.rent_description,
@@ -20,7 +21,7 @@ const getMyRentals = async (rental_tenant) => {
       rentals.rental_end,
       rentals.rental_status
       FROM rentals
-      INNER JOIN rentings ON rentals.rental_id = rentings.rent_id
+      INNER JOIN rentings ON rentals.rental_rent_id = rentings.rent_id
       WHERE rental_tenant=?
       `,
       [rental_tenant]
