@@ -6,7 +6,7 @@ const selectTenantRatings = async (username) => {
 
   const [ratings] = await pool.query(
     `
-    SELECT renting_id, rating, comments, createdAt FROM tenant_ratings WHERE tenant_id=?
+    SELECT renting_id, rating, owner_id, tenant_id, comments, createdAt FROM tenant_ratings WHERE tenant_id=?
     `,
     [username]
   );

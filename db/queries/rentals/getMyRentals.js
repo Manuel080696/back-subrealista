@@ -12,6 +12,7 @@ const getMyRentals = async (rental_tenant) => {
       rentals.rental_id,
       rentals.rental_rent_id,
       rentals.rental_owner,
+      rentals.rental_tenant,
       rentings.rent_title,
       rentings.rent_description,
       rentings.rent_location,

@@ -1,4 +1,5 @@
 const { postRateOwner } = require('../../db/queries/ratings/postRateOwner.js');
+const jwt = require('jsonwebtoken');
 
 const rateOwner = async (req, res, next) => {
   try {
@@ -7,6 +8,8 @@ const rateOwner = async (req, res, next) => {
     const username = decodedToken.username;
     const { rating, comments } = req.body;
     const { id } = req.params;
+
+    console.log(id);
 
     const rateInfo = await postRateOwner(username, id, rating, comments);
 
