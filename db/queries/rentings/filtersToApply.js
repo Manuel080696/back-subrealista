@@ -47,13 +47,13 @@ const filtersToApply = async (queryParams) => {
     clause = 'AND';
   }
 
-  if (min_date) {
+  if (min_date != 'undefined') {
     sqlQuery += ` ${clause} ? NOT BETWEEN rentals.rental_start AND rentals.rental_end`;
     values.push(new Date(min_date));
     clause = 'AND';
   }
 
-  if (max_date) {
+  if (max_date != 'undefined') {
     sqlQuery += ` ${clause} ? NOT BETWEEN rentals.rental_start AND rentals.rental_end`;
     values.push(new Date(max_date));
     clause = 'AND';
