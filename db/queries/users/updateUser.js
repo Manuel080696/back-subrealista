@@ -38,15 +38,6 @@ const updateUser = async (
       [username, oldUsername]
     );
 
-    const [favorites] = await pool.query(
-      `
-        UPDATE favorites
-        SET user_id = ?
-        WHERE user_id = ?
-      `,
-      [username, oldUsername]
-    );
-
     const [owner_ratings] = await pool.query(
       `
         UPDATE owner_ratings
