@@ -23,20 +23,45 @@ const newRenting = async (req, res, next) => {
       'rent_images'
     );
     await createPathIfNotExists(directory);
-    const imageName = req.files.rent_cover.name;
-    const ext = path.extname(imageName).toLowerCase();
-    const newName = `${uuid}${ext}`;
-    const imgUrl = `${HOST}/uploads/rent_images/${newName}`;
 
-    if (req.files && req.files.rent_cover) {
-      await sharp(req.files.rent_cover.data)
+    //Arreglo
+    console.log(req.files);
+    const files = req.files;
+    const uploadedImages = Array.isArray(files) ? files : [files];
+    const arrayImgURL = [];
+
+    for (const file of uploadedImages) {
+      const imageName = file.name;
+
+      const ext = path.extname(imageName).toLowerCase();
+      const newName = `${uuid}${ext}`;
+
+      if (file) {
+        sharp(file)
+          .webp({ effort: 6 })
+          .toFile(path.join(directory, newName), (err) => {
+            if (err) {
+              console.error(err);
+            }
+          });
+      }
+
+      const imgUrl = `${HOST}/uploads/rent_images/${newName}`;
+      if (imgUrl) {
+        arrayImgURL.append(imgUrl);
+      }
+    }
+    console.log(req.files);
+
+    /*    if (req.files) {
+      await sharp(req.files)
         .resize(1920, 1080)
         .toFile(path.join(directory, newName), (err) => {
           if (err) {
             console.error(err);
           }
         });
-    }
+    } */
 
     const {
       rent_title,
@@ -45,6 +70,7 @@ const newRenting = async (req, res, next) => {
       rent_description,
       rent_price,
       rent_location,
+      rent_address,
       elevator,
       near_beach,
       near_mountain,
@@ -59,6 +85,8 @@ const newRenting = async (req, res, next) => {
       toaster,
       fully_equipped,
     } = req.body;
+
+    if (req.body) console.log(req.body);
 
     const services = {
       elevator,
@@ -82,8 +110,9 @@ const newRenting = async (req, res, next) => {
       rent_rooms,
       rent_description,
       rent_price,
+      rent_address,
       rent_location,
-      imgUrl,
+      arrayImgURL,
       services,
       username
     );

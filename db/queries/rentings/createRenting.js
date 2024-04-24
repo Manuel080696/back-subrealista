@@ -7,7 +7,7 @@ const createRenting = async (
   rent_description,
   rent_price,
   rent_location,
-  rent_cover,
+  rent_address,
   services,
   rent_owner
 ) => {
@@ -18,7 +18,7 @@ const createRenting = async (
 
     const [result] = await connection.query(
       `
-      INSERT INTO rentings (rent_title, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_cover, rent_owner)
+      INSERT INTO rentings (rent_title, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_address, rent_owner)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       `,
       [
@@ -27,8 +27,8 @@ const createRenting = async (
         rent_rooms,
         rent_description,
         rent_price,
+        rent_address,
         rent_location,
-        rent_cover,
         rent_owner,
       ]
     );
