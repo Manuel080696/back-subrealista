@@ -8,6 +8,7 @@ const getProfile = async (username) => {
     `
     SELECT
       u.username,
+      u.email,
       u.profilePic,
       u.bio,
       u.address,
