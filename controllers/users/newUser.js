@@ -2,12 +2,27 @@ const bcrypt = require('bcrypt');
 const newUser = require('../../db/queries/users/newUser');
 const crypto = require('crypto');
 const { sendMail } = require('../../helpers');
+const { generateError } = require('../../helpers/generateError.js');
+const getUsername = require('../../db/queries/users/getUsername');
 
 const createNewUser = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
     const encryptedPassword = await bcrypt.hash(password, 10);
     const registrationCode = crypto.randomUUID();
+
+    if (username) {
+      const userDB = await getUsername(username);
+      if (username === userDB?.username) {
+        throw generateError('Este nombre de usuario ya existe.', 400);
+      }
+    }
+
+    const HOST =
+      'http://' +
+      (process.env.HOST || 'localhost') +
+      ':' +
+      (process.env.PORT || 3000);
 
     const userId = await newUser({
       ...req.body,
@@ -18,7 +33,7 @@ const createNewUser = async (req, res, next) => {
     await sendMail({
       to: email,
       subject: 'Verifica tu correo electrónico',
-      HTMLPart: `Por favor, <a href='https://subrealista.alwaysdata.net/validate/${registrationCode}'>haz click aquí</a> para validar tu cuenta.<br/> En caso de no funcionar, por favor introduce este código manualmente: ${registrationCode}`,
+      HTMLPart: `Para verificar tu cuenta, copia el siguiente código: ${registrationCode}`,
     });
 
     res.status(201).send({

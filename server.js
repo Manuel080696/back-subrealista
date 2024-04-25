@@ -29,8 +29,6 @@ app.use(express.json());
 // Middleware para subida de archivos
 app.use(fileUpload());
 
-// Testeo para Yese
-
 // Middleware para cargar imagenes
 app.use('/uploads/profile_pics', express.static('./uploads/profile_pics'));
 app.use('/uploads/rent_images', express.static('./uploads/rent_images'));
@@ -43,8 +41,6 @@ const {
   getUserProfile,
   updateProfile,
   getRentings,
-  sendEmailPassword,
-  changePassword,
 } = require('./controllers/users/index.js');
 
 // Controllers alquileres
@@ -82,8 +78,6 @@ const {
 app.post('/register', createNewUser); //registro
 app.post('/validate/:registrationCode', validateUser); //activacion
 app.post('/login', loginUser); //login
-app.post('/reset-password', sendEmailPassword); //Email para cambiar contraseña
-app.post('/change-password', changePassword); //Hacer cambio de contraseña
 app.get('/users/:username', getUserProfile); //perfil
 app.put('/users/:username', authUser, updateProfile); //actualizar
 app.get('/users/:username/rentings', getRentings); //ver pisos
@@ -115,6 +109,15 @@ app.post('/myrentings/:id/rate', authUser, rateTenant); // Postear valoraciones 
 
 // Middleware para mostrar logs
 app.use(morgan('dev'));
+
+//Middleware de gestión de errores
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.status(error.httpStatus || 500).send({
+    status: 'error',
+    message: error.message,
+  });
+});
 
 app.use((req, res) => {
   res.status(404).send({ status: 'error', message: 'Not found' });

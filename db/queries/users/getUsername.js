@@ -1,11 +1,12 @@
 const getPool = require('../../getDB.js');
 
-const getUsername = async (id) => {
+const getUsername = async (username) => {
   const pool = await getPool();
 
-  const [[user]] = await pool.query(`SELECT username FROM users WHERE id = ?`, [
-    id,
-  ]);
+  const [[user]] = await pool.query(
+    `SELECT username FROM users WHERE username = ?`,
+    [username]
+  );
 
   return user;
 };

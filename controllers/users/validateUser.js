@@ -12,11 +12,7 @@ const validateUser = async (req, res) => {
       .status(200)
       .json({ status: 'ok', message: 'Usuario validado correctamente.' });
   } catch (error) {
-    console.error('Error al procesar la validación del usuario:', error);
-    res.status(500).json({
-      status: 'error',
-      message: 'Error al procesar la validación del usuario.',
-    });
+    next(error);
   }
 };
 

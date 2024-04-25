@@ -44,7 +44,11 @@ const updateRenting = async (req, res, next) => {
       fully_equipped,
     };
 
-    const HOST = 'https://subrealista.alwaysdata.net';
+    const HOST =
+      'http://' +
+      (process.env.HOST || 'localhost') +
+      ':' +
+      (process.env.PORT || 3000);
 
     //Procesado imagenes
     if (req.files && req.files.rent_cover) {

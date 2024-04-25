@@ -11,10 +11,14 @@ const updateProfile = async (req, res, next) => {
   const token = req.headers.authorization;
   const decodedToken = jwt.verify(token, process.env.SECRET);
   const username = decodedToken.username;
-  const HOST = 'https://subrealista.alwaysdata.net';
+  const HOST =
+    'http://' +
+    (process.env.HOST || 'localhost') +
+    ':' +
+    (process.env.PORT || 3000);
 
   //Procesado imagenes
-  let imgUrl;
+  /* let imgUrl;
   if (req.files && req.files.profilePic) {
     const uuid = randomUUID();
     const directory = path.join(
@@ -37,7 +41,7 @@ const updateProfile = async (req, res, next) => {
         }
       });
   }
-
+ */
   const updatedUser = {
     ...(req.body.email && { email: req.body.email }),
     ...(req.body.username && { username: req.body.username }),
@@ -56,16 +60,15 @@ const updateProfile = async (req, res, next) => {
     if (!isPasswordValid) {
       return res.status(401).json({ error: 'La contraseña es incorrecta' });
     }
-  } else {
+  } /*  else {
     return res.status(400).json({ error: 'La contraseña es obligatoria' });
-  }
+  } */
 
   const rowsAffected = await updateUser(
     updatedUser.email,
     updatedUser.username,
     updatedUser.bio,
     updatedUser.address,
-    imgUrl,
     username
   );
 
