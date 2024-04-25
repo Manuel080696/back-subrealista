@@ -44,7 +44,7 @@ const init = async () => {
       rent_price INT UNSIGNED NOT NULL,
       rent_location ENUM('Andalucia', 'Aragon', 'Asturias', 'Balears', 'Canarias', 'Cantabria','Castilla y Leon', 'Castilla La Mancha', 'Cataluña', 'Comunidad Valenciana', 'Extremadura', 'Galicia', 'Madrid', 'Murcia', 'Navarra', 'Pais Vasco', 'Rioja', 'Ceuta', 'Melilla') NOT NULL, 
       rent_address VARCHAR(255) NOT NULL,
-      rent_cover VARCHAR(255) NOT NULL,
+      rent_cover VARCHAR(255),
       active BOOLEAN DEFAULT true,
       createdAt DATETIME DEFAULT NOW(),
       FOREIGN KEY (rent_owner) REFERENCES users(username)

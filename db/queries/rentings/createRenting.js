@@ -73,7 +73,14 @@ const createRenting = async (
       ]
     );
 
-    return result.data;
+    const [finalResult] = await connection.query(
+      `
+        SELECT * FROM rentings WHERE rent_id=?
+      `,
+      [rentID]
+    );
+
+    return finalResult;
   } finally {
     if (connection) connection.release;
   }

@@ -18,7 +18,7 @@ const newRenting = async (req, res, next) => {
       (process.env.PORT || 3000);
 
     //Procesado imagenes
-    const uuid = randomUUID();
+    /* const uuid = randomUUID();
     const directory = path.join(
       __dirname,
       '..',
@@ -26,10 +26,10 @@ const newRenting = async (req, res, next) => {
       'uploads',
       'rent_images'
     );
-    await createPathIfNotExists(directory);
+    await createPathIfNotExists(directory); */
 
     //Arreglo
-    console.log(req.files);
+    /* console.log(req.files);
     const files = req.files;
     const uploadedImages = Array.isArray(files) ? files : [files];
     const arrayImgURL = [];
@@ -55,7 +55,7 @@ const newRenting = async (req, res, next) => {
         arrayImgURL.append(imgUrl);
       }
     }
-    console.log(req.files);
+    console.log(req.files); */
 
     /*    if (req.files) {
       await sharp(req.files)
@@ -90,8 +90,6 @@ const newRenting = async (req, res, next) => {
       fully_equipped,
     } = req.body;
 
-    if (req.body) console.log(req.body);
-
     const services = {
       elevator,
       near_beach,
@@ -108,15 +106,28 @@ const newRenting = async (req, res, next) => {
       fully_equipped,
     };
 
+    let address = '';
+    if (rent_address.street.length > 0) {
+      address.concat(rent_address.street);
+    }
+    if (rent_address.city.length > 0) {
+      address.concat(rent_address.city);
+    }
+    if (rent_address.state.length > 0) {
+      address.concat(rent_address.state);
+    }
+    if (rent_address.postalCode.length > 0) {
+      address.concat(rent_address.postalCode);
+    }
+
     const rent_id = await createRenting(
       rent_title,
       rent_type,
       rent_rooms,
       rent_description,
       rent_price,
-      rent_address,
+      address,
       rent_location,
-      arrayImgURL,
       services,
       username
     );
@@ -131,7 +142,6 @@ const newRenting = async (req, res, next) => {
         rent_description,
         rent_price,
         rent_location,
-        imgUrl,
       },
       message: `${rent_title} se ha publicado con éxito.`,
     });

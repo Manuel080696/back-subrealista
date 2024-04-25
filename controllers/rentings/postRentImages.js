@@ -7,9 +7,9 @@ const jwt = require('jsonwebtoken');
 
 const postRentImages = async (req, res, next) => {
   try {
-    const token = req.headers.authorization;
+    /* const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, process.env.SECRET);
-    const username = decodedToken.username;
+    const username = decodedToken.username; */
     const { id } = req.params;
 
     const HOST =
@@ -17,7 +17,7 @@ const postRentImages = async (req, res, next) => {
       (process.env.HOST || 'localhost') +
       ':' +
       (process.env.PORT || 3000);
-
+    console.log(req);
     const array = Object.values(req.files).slice();
 
     //Procesado imagenes
@@ -45,7 +45,7 @@ const postRentImages = async (req, res, next) => {
             }
           });
       }
-      await postNewImages(id, username, imgUrl);
+      await postNewImages(id, imgUrl);
     }
 
     res.send({
