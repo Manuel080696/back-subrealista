@@ -79,7 +79,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"toni.rondan17@gmail.com\",\r\n    \"password\": \"Pass1234\"\r\n}",
+							"raw": "{\r\n    \"email\": \"antoniorondanvlc@gmail.com\",\r\n    \"password\": \"Pass1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -236,9 +236,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/users/Toni",
+							"raw": "{{local}}/users/Toni",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"users",
@@ -310,7 +310,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/search?rent_location=&min_price=&max_price=&min_rooms=&max_rooms=&min_date=&max_date=",
+							"raw": "{{URL}}/search?rent_location=&min_price=&max_price=&min_rooms=&max_rooms=&min_date=undefined&max_date=undefined",
 							"host": [
 								"{{URL}}"
 							],
@@ -340,11 +340,11 @@
 								},
 								{
 									"key": "min_date",
-									"value": ""
+									"value": "undefined"
 								},
 								{
 									"key": "max_date",
-									"value": ""
+									"value": "undefined"
 								}
 							]
 						}
@@ -502,33 +502,49 @@
 								{
 									"key": "image1",
 									"type": "file",
-									"src": []
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/bathroom-this-apartment-near-the-beach---catalonia.jpeg"
 								},
 								{
 									"key": "image2",
 									"type": "file",
-									"src": []
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/bedroom-this-apartment-near-the-beach---catalonia.jpeg"
 								},
 								{
 									"key": "image3",
 									"type": "file",
-									"src": []
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/hall-this-apartment-near-the-beach---catalonia (1).jpeg"
 								},
 								{
 									"key": "image4",
 									"type": "file",
-									"src": []
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/hall-this-apartment-near-the-beach---catalonia.jpeg"
+								},
+								{
+									"key": "image5",
+									"type": "file",
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/hall-this-apartment-near-the-beach---catalonia.jpeg"
+								},
+								{
+									"key": "image6",
+									"type": "file",
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/kitchen-this-apartment-near-the-beach---catalonia.jpeg"
+								},
+								{
+									"key": "image7",
+									"type": "file",
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/living-room-this-apartment-near-the-beach---catalonia.jpeg"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/rentings/1",
+							"raw": "{{URL}}/rentings/images/9",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"rentings",
-								"1"
+								"images",
+								"9"
 							]
 						}
 					},
@@ -554,113 +570,132 @@
 								{
 									"key": "rent_title",
 									"value": "Prueba de cambio",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "rent_type",
 									"value": "Piso",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "rent_rooms",
 									"value": "3",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "rent_description",
 									"value": "Prueba de cambio",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "rent_price",
 									"value": "3500",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "rent_location",
 									"value": "Balears",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "rent_cover",
 									"type": "file",
-									"src": []
+									"src": "/D:/Descargas/imagenes subrealista/id_09_pisoPlayaCataluna/cover.jpeg"
 								},
 								{
 									"key": "elevator",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "near_beach",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "near_mountain",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "hairdryer",
 									"value": "1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "washing_machine",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "ac",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "smoke_detector",
 									"value": "1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "first_kit_aid",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "wifi",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "refrigerator",
 									"value": "1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "freezer",
 									"value": "1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "toaster",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "fully_equipped",
 									"value": "0",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/rentings/7",
+							"raw": "{{URL}}/rentings/9",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"rentings",
-								"7"
+								"9"
 							]
 						}
 					},
@@ -924,13 +959,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/kaysera/ratings/rentings",
+							"raw": "{{URL}}/users/Toni/ratings/rentings",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								"kaysera",
+								"Toni",
 								"ratings",
 								"rentings"
 							]
@@ -944,15 +979,53 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/kaysera/ratings/rentals",
+							"raw": "{{URL}}/users/Toni/ratings/rentals",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"users",
-								"kaysera",
+								"Toni",
 								"ratings",
 								"rentals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rateOwner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/myrentals/1/rate",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"myrentals",
+								"1",
+								"rate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rateTenant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/myrentings/1/rate",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"myrentings",
+								"1",
+								"rate"
 							]
 						}
 					},
@@ -994,11 +1067,16 @@
 	"variable": [
 		{
 			"key": "URL",
-			"value": "localhost:3000"
+			"value": "https://subrealista.alwaysdata.net"
 		},
 		{
 			"key": "JWT",
 			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "local",
+			"value": "localhost:3000",
 			"type": "string"
 		}
 	]
