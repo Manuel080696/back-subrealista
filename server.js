@@ -41,6 +41,8 @@ const {
   getUserProfile,
   updateProfile,
   getRentings,
+  sendEmailPassword,
+  changePassword,
 } = require('./controllers/users/index.js');
 
 // Controllers alquileres
@@ -81,6 +83,8 @@ app.post('/login', loginUser); //login
 app.get('/users/:username', getUserProfile); //perfil
 app.put('/users/:username', authUser, updateProfile); //actualizar
 app.get('/users/:username/rentings', getRentings); //ver pisos
+app.post('/recovery', sendEmailPassword); //recuperar contraseña
+app.post('/recovery/:resetPassCode', changePassword); //cambiar contraseña
 
 // Rutas alquileres
 app.get('/', getAllRentings); // Ver todos

@@ -3,7 +3,8 @@ const updatePass = require('../../db/queries/users/updatePass.js');
 
 const changePassword = async (req, res, next) => {
   try {
-    const { resetPassCode, email, newPass, repeatPass } = req.body;
+    const { resetPassCode } = req.params;
+    const { email, newPass, repeatPass } = req.body;
 
     if (newPass !== repeatPass) {
       return res.status(400).json({ message: 'Las contraseñas no coinciden.' });

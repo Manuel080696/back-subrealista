@@ -24,9 +24,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/register",
+							"raw": "{{local}}/register",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"register"
@@ -41,9 +41,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/validate/:registrationCode",
+							"raw": "{{local}}/validate/:registrationCode",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"validate",
@@ -87,9 +87,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/login",
+							"raw": "{{local}}/login",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"login"
@@ -108,18 +108,18 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "toni.rondan17@gmail.com",
+									"value": "antoniorondanvlc@gmail.com",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/reset-password",
+							"raw": "{{local}}/recovery",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
-								"reset-password"
+								"recovery"
 							]
 						}
 					},
@@ -134,13 +134,8 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "resetPassCode",
-									"value": "380b2d94-3e2b-40b5-9eb8-a9c5f7c29707",
-									"type": "text"
-								},
-								{
 									"key": "email",
-									"value": "toni.rondan17@gmail.com",
+									"value": "antoniorondanvlc@gmail.com",
 									"type": "text"
 								},
 								{
@@ -156,12 +151,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/change-password",
+							"raw": "{{local}}/recovery/146cec04-0644-4af9-b89d-e12c185e15ca",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
-								"change-password"
+								"recovery",
+								"146cec04-0644-4af9-b89d-e12c185e15ca"
 							]
 						}
 					},
@@ -173,9 +169,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/Toni",
+							"raw": "{{local}}/users/Toni",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"users",
@@ -254,9 +250,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/Toni/rentings",
+							"raw": "{{local}}/users/Toni/rentings",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"users",
@@ -278,9 +274,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}",
+							"raw": "{{local}}",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							]
 						}
 					},
@@ -292,9 +288,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/rentings/1",
+							"raw": "{{local}}/rentings/1",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"rentings",
@@ -310,9 +306,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/search?rent_location=&min_price=&max_price=&min_rooms=&max_rooms=&min_date=undefined&max_date=undefined",
+							"raw": "{{local}}/search?rent_location=&min_price=&max_price=&min_rooms=&max_rooms=&min_date=undefined&max_date=undefined",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"search"
@@ -471,9 +467,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/new-renting",
+							"raw": "{{local}}/new-renting",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"new-renting"
@@ -537,9 +533,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/rentings/images/9",
+							"raw": "{{local}}/rentings/images/9",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"rentings",
@@ -689,9 +685,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/rentings/9",
+							"raw": "{{local}}/rentings/9",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"rentings",
@@ -716,9 +712,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/rentings/1",
+							"raw": "{{local}}/rentings/1",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"rentings",
@@ -757,9 +753,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/rentings/1",
+							"raw": "{{local}}/rentings/1",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"rentings",
@@ -784,9 +780,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/myrentals",
+							"raw": "{{local}}/myrentals",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"myrentals"
@@ -810,9 +806,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/myrentals/9",
+							"raw": "{{local}}/myrentals/9",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"myrentals",
@@ -837,9 +833,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/myrentings",
+							"raw": "{{local}}/myrentings",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"myrentings"
@@ -863,9 +859,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/myrentings/2",
+							"raw": "{{local}}/myrentings/2",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"myrentings",
@@ -899,9 +895,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/myrentings/2",
+							"raw": "{{local}}/myrentings/2",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"myrentings",
@@ -935,9 +931,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/myrentals/1/cancel",
+							"raw": "{{local}}/myrentals/1/cancel",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"myrentals",
@@ -959,9 +955,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/Toni/ratings/rentings",
+							"raw": "{{local}}/users/Toni/ratings/rentings",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"users",
@@ -979,9 +975,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/Toni/ratings/rentals",
+							"raw": "{{local}}/users/Toni/ratings/rentals",
 							"host": [
-								"{{URL}}"
+								"{{local}}"
 							],
 							"path": [
 								"users",
