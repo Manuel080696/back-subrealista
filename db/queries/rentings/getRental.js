@@ -9,7 +9,7 @@ const getRental = async (id) => {
 
     const [result] = await connection.query(
       `
-      SELECT rent_owner, rent_title, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_address, createdAt
+      SELECT rent_owner, rent_title, rent_id, rent_type, rent_rooms, rent_description, rent_price, rent_location, rent_address, createdAt
       FROM rentings
       WHERE rent_id= ?
         `,
