@@ -34,8 +34,8 @@ const updateUser = async (email, username, bio, address, oldUsername) => {
     const [owner_ratings] = await pool.query(
       `
         UPDATE owner_ratings
-        SET owner_id = ?
-        WHERE owner_id = ?
+        SET owner = ?
+        WHERE owner = ?
       `,
       [username, oldUsername]
     );
@@ -43,8 +43,8 @@ const updateUser = async (email, username, bio, address, oldUsername) => {
     const [tenant_ratings] = await pool.query(
       `
         UPDATE tenant_ratings
-        SET tenant_id = ?
-        WHERE tenant_id = ?
+        SET tenant = ?
+        WHERE tenant = ?
       `,
       [username, oldUsername]
     );
