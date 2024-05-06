@@ -17,56 +17,6 @@ const newRenting = async (req, res, next) => {
       ':' +
       (process.env.PORT || 3000);
 
-    //Procesado imagenes
-    /* const uuid = randomUUID();
-    const directory = path.join(
-      __dirname,
-      '..',
-      '..',
-      'uploads',
-      'rent_images'
-    );
-    await createPathIfNotExists(directory); */
-
-    //Arreglo
-    /* console.log(req.files);
-    const files = req.files;
-    const uploadedImages = Array.isArray(files) ? files : [files];
-    const arrayImgURL = [];
-
-    for (const file of uploadedImages) {
-      const imageName = file.name;
-
-      const ext = path.extname(imageName).toLowerCase();
-      const newName = `${uuid}${ext}`;
-
-      if (file) {
-        sharp(file)
-          .webp({ effort: 6 })
-          .toFile(path.join(directory, newName), (err) => {
-            if (err) {
-              console.error(err);
-            }
-          });
-      }
-
-      const imgUrl = `${HOST}/uploads/rent_images/${newName}`;
-      if (imgUrl) {
-        arrayImgURL.append(imgUrl);
-      }
-    }
-    console.log(req.files); */
-
-    /*    if (req.files) {
-      await sharp(req.files)
-        .resize(1920, 1080)
-        .toFile(path.join(directory, newName), (err) => {
-          if (err) {
-            console.error(err);
-          }
-        });
-    } */
-
     const {
       rent_title,
       rent_type,

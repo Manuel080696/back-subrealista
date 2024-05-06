@@ -1,13 +1,20 @@
 const getPool = require('../../getDB');
 
-const newUser = async ({ username, email, password, registrationCode }) => {
+const newUser = async ({
+  username,
+  email,
+  address,
+  bio,
+  password,
+  registrationCode,
+}) => {
   try {
     const pool = await getPool();
     const [{ insertID }] = await pool.query(
       `
       INSERT INTO users
-      (username, email, password, registrationCode) VALUES (?, ?, ?, ?)`,
-      [username, email, password, registrationCode]
+      (username, email, address, bio, password, registrationCode) VALUES (?, ?, ?, ?, ?, ?)`,
+      [username, email, address, bio, password, registrationCode]
     );
     return insertID;
   } catch (error) {

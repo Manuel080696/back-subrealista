@@ -13,7 +13,7 @@ const postRateOwner = async (username, id, rating, comments) => {
 
   const [postRating] = await pool.query(
     `
-      INSERT INTO tenant_ratings (owner_id, tenant_id, renting_id, rating, comments)
+      INSERT INTO tenant_ratings (owner, tenant, renting_id, rating, comments)
       VALUES (?, ?, ?, ?, ?)
     `,
     [ownerUsername, username, id, rating, comments]

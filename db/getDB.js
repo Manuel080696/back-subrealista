@@ -15,6 +15,8 @@ async function getDB() {
     });
   }
 
+  await pool.query(`CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE}`);
+
   return pool;
 }
 

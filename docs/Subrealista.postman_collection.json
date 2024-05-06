@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"kaysera\",\r\n    \"email\": \"antoniorondanvlc@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"raw": "{\r\n    \"username\": \"kaysera\",\r\n    \"email\": \"antoniorondanvlc@gmail.com\",\r\n    \"address\": \"address\",\r\n    \"bio\": \"bio\",\r\n    \"password\": \"password\",\r\n    \"repeatPassword\": \"repeatPassword\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,7 +52,8 @@
 							"variable": [
 								{
 									"key": "registrationCode",
-									"value": ""
+									"value": "",
+									"uuid": "b6e8f622-c8fd-45a2-bbd6-f83a8c41aba0"
 								}
 							]
 						}
@@ -192,7 +193,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "ce9ca061-2945-4242-9c15-20f927960207"
 							}
 						],
 						"body": {
@@ -358,7 +360,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "69df3e14-158f-4bb8-be81-6ff94210b07a"
 							}
 						],
 						"body": {
@@ -489,7 +492,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "0b6d026e-4512-4832-ae07-1e8fe19f6e70"
 							}
 						],
 						"body": {
@@ -557,7 +561,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "43f9efbc-3a5f-43cd-91df-4974f9d2c22d"
 							}
 						],
 						"body": {
@@ -708,7 +713,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "0fb55ea3-6efa-4d23-bea3-d4637ea8ee16"
 							}
 						],
 						"url": {
@@ -740,7 +746,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "306d8e46-58c6-40d3-a22a-f4d704134ef5"
 							}
 						],
 						"body": {
@@ -776,7 +783,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "dd8b9379-0c34-4838-8877-a2b46e8fb631"
 							}
 						],
 						"url": {
@@ -802,7 +810,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "600d8647-734f-48dd-af99-4006196f18e0"
 							}
 						],
 						"url": {
@@ -829,7 +838,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "a12683cc-0570-49bd-8752-30f12d4cc06b"
 							}
 						],
 						"url": {
@@ -855,7 +865,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "e4b57bfd-ff64-40b4-bf9f-bbee488fce6c"
 							}
 						],
 						"url": {
@@ -882,7 +893,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "b0242ef0-5853-44d2-8c4a-fd73bd01205d"
 							}
 						],
 						"body": {
@@ -918,7 +930,8 @@
 							{
 								"key": "Authorization",
 								"value": "{{JWT}}",
-								"type": "text"
+								"type": "text",
+								"uuid": "d7aa5d67-83d5-4c78-8407-e90eaeb42593"
 							}
 						],
 						"body": {
@@ -1072,7 +1085,7 @@
 		},
 		{
 			"key": "local",
-			"value": "localhost:3000",
+			"value": "http://localhost:3000",
 			"type": "string"
 		}
 	]

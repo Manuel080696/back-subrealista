@@ -7,9 +7,16 @@ const getUsername = require('../../db/queries/users/getUsername');
 
 const createNewUser = async (req, res, next) => {
   try {
-    const { username, email, password } = req.body;
-    const encryptedPassword = await bcrypt.hash(password, 10);
-    const registrationCode = crypto.randomUUID();
+    const { username, email, password, repeatPassword, address, bio } =
+      req.body;
+
+    if (password !== repeatPassword) {
+      throw generateError('Las contraseñas no coinciden.', 400);
+    }
+
+    if (!username || !email || !password || !address || !bio) {
+      throw generateError('Faltan campos por rellenar.', 400);
+    }
 
     if (username) {
       const userDB = await getUsername(username);
@@ -18,13 +25,10 @@ const createNewUser = async (req, res, next) => {
       }
     }
 
-    const HOST =
-      'http://' +
-      (process.env.HOST || 'localhost') +
-      ':' +
-      (process.env.PORT || 3000);
+    const encryptedPassword = await bcrypt.hash(password, 10);
+    const registrationCode = crypto.randomUUID();
 
-    const userId = await newUser({
+    await newUser({
       ...req.body,
       password: encryptedPassword,
       registrationCode: registrationCode,

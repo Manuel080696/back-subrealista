@@ -208,7 +208,7 @@ const populate = async () => {
     console.log('Rellenando tabla owner_ratings');
     await connection.query(
       `
-        INSERT INTO owner_ratings (owner_id, tenant_id, renting_id, rating, comments)
+        INSERT INTO owner_ratings (owner, tenant, renting_id, rating, comments)
         VALUES 
         ('Manu', 'Maria', 2, 5, 'Very nice people'),
         ('Oscar', 'Yese', 3, 5, 'Very nice people'),
@@ -220,7 +220,7 @@ const populate = async () => {
     console.log('Rellenando tabla tenant_ratings');
     await connection.query(
       `
-        INSERT INTO tenant_ratings (tenant_id, owner_id, renting_id, rating, comments)
+        INSERT INTO tenant_ratings (tenant, owner, renting_id, rating, comments)
         VALUES 
         ('Maria', 'Manu', 2, 5, 'Very nice people'),
         ('Yese', 'Oscar', 3, 5, 'Very nice people'),

@@ -32,7 +32,7 @@ const postRateTenant = async (username, id, rating, comments) => {
 
   const [postRating] = await connection.query(
     `
-      INSERT INTO tenant_ratings (tenant_id, owner_id, renting_id, rating, comments)
+      INSERT INTO tenant_ratings (tenant, owner, renting_id, rating, comments)
       VALUES (?, ?, ?, ?, ?)
     `,
     [tenantUsername, username, renting_id, rating, comments]

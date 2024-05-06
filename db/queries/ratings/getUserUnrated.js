@@ -37,7 +37,10 @@ const getUserUnrated = async (username) => {
     [username]
   );
 
-  const finalReturn = [unratedAsOwner, unratedAsTenant];
+  const finalReturn = {
+    unratedAsOwner: unratedAsOwner,
+    unratedAsTenant: unratedAsTenant,
+  };
 
   return finalReturn;
 };
