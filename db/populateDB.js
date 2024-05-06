@@ -8,6 +8,8 @@ const populate = async () => {
     const defaultPassword = 'Pass1234';
     const hashedPass = await bcrypt.hash(defaultPassword, 10);
 
+    await connection.query(`USE ${process.env.MYSQL_DATABASE}`);
+
     console.log('Rellenando tabla users');
     await connection.query(
       `
