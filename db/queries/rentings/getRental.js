@@ -62,12 +62,16 @@ const getRental = async (id) => {
       throw generateError('Este alquiler no existe', 404);
     }
 
-    const finalResult = {
+    //objeto
+    /* const finalResult = {
       result: result[0],
       images: images,
       services: services,
       rentals: rentals,
-    };
+    }; */
+
+    // array
+    const finalResult = [result[0], images, services, rentals];
 
     return finalResult;
   } finally {
