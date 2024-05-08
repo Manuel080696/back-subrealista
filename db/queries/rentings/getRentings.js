@@ -6,7 +6,8 @@ const getRentings = async () => {
   try {
     connection = await getPool();
 
-    const [result] = await connection.query(`
+    const [result] = await connection.query(
+      `
       SELECT rent_id,
       rent_owner,
       rent_title,
@@ -15,13 +16,30 @@ const getRentings = async () => {
       rent_description,
       rent_price,
       rent_location,
-      rent_address,
       rent_cover
       FROM rentings
       WHERE active=true
-      ORDER BY createdAt DESC`);
+      ORDER BY createdAt DESC
+      `
+    );
 
-    return result;
+    const rentingIds = result.map((renting) => renting.rent_id);
+    const [imagesResult] = await connection.query(
+      `
+      SELECT rent_id, rent_image
+      FROM rent_images
+      WHERE rent_id IN (${rentingIds.join(',')})
+      `
+    );
+
+    const rentingsWithImages = result.map((renting) => {
+      const images = imagesResult.filter(
+        (image) => image.rent_id === renting.rent_id
+      );
+      return { ...renting, images };
+    });
+
+    return rentingsWithImages;
   } finally {
     if (connection) connection.release;
   }
