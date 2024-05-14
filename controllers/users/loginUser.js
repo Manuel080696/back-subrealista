@@ -19,8 +19,8 @@ const loginUser = async (req, res, next) => {
       throw generateError('El email o la contraseña son incorrectos', 400);
     }
 
-    const { username, role } = userDB;
-    const tokenPayLoad = { username, email, role };
+    const { username } = userDB;
+    const tokenPayLoad = { username, email };
     const expiresIn = '30d';
     const token = jwt.sign(tokenPayLoad, process.env.SECRET, { expiresIn });
     res.send({ status: 'ok', data: { tokenPayLoad, expiresIn }, token });

@@ -41,7 +41,17 @@ const updateProfile = async (req, res, next) => {
       error: 'No hay ningún dato para actualizar o ha ocurrido un error',
     });
   }
-  return res.json(updatedUser);
+
+  const newUsername = updatedUser.username || username;
+  const newEmail = updatedUser.email || decodedToken.email;
+
+  const tokenPayLoad = {
+    newUsername,
+    newEmail,
+  };
+  const expiresIn = '30d';
+  const newToken = jwt.sign(tokenPayLoad, process.env.SECRET, { expiresIn });
+  res.send({ status: 'ok', data: { tokenPayLoad, expiresIn }, newToken });
 };
 
 module.exports = updateProfile;
