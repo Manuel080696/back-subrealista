@@ -1,8 +1,4 @@
 const { createRenting } = require('../../db/queries/rentings/createRenting.js');
-const path = require('path');
-const { randomUUID } = require('crypto');
-const { createPathIfNotExists } = require('../../helpers/generateError.js');
-const sharp = require('sharp');
 const jwt = require('jsonwebtoken');
 
 const newRenting = async (req, res, next) => {
@@ -11,19 +7,12 @@ const newRenting = async (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.SECRET);
     const username = decodedToken.username;
 
-    const HOST =
-      'http://' +
-      (process.env.HOST || 'localhost') +
-      ':' +
-      (process.env.PORT || 3000);
-
     const {
       rent_title,
       rent_type,
       rent_rooms,
       rent_description,
       rent_price,
-      rent_location,
       rent_address,
       elevator,
       near_beach,
@@ -39,6 +28,8 @@ const newRenting = async (req, res, next) => {
       toaster,
       fully_equipped,
     } = req.body;
+
+    const { images } = req.files;
 
     const services = {
       elevator,
@@ -56,45 +47,50 @@ const newRenting = async (req, res, next) => {
       fully_equipped,
     };
 
-    let address = '';
-    if (rent_address.street.length > 0) {
-      address.concat(rent_address.street);
-    }
-    if (rent_address.city.length > 0) {
-      address.concat(rent_address.city);
-    }
-    if (rent_address.state.length > 0) {
-      address.concat(rent_address.state);
-    }
-    if (rent_address.postalCode.length > 0) {
-      address.concat(rent_address.postalCode);
+    const rentLocations = [
+      'Andalucia',
+      'Aragon',
+      'Asturias',
+      'Balears',
+      'Canarias',
+      'Cantabria',
+      'Castilla y Leon',
+      'Castilla La Mancha',
+      'Cataluña',
+      'Comunidad Valenciana',
+      'Extremadura',
+      'Galicia',
+      'Madrid',
+      'Murcia',
+      'Navarra',
+      'Pais Vasco',
+      'Rioja',
+      'Ceuta',
+      'Melilla',
+    ];
+
+    const findMatchingLocation = (address) => {
+      return rentLocations.find((location) => address.includes(location));
+    };
+
+    let rent_location;
+    // Si rent_location no está definido y hay rent_address, intenta buscar una coincidencia
+    if (rent_address) {
+      rent_location = findMatchingLocation(rent_address);
+      console.log(rent_location);
     }
 
-    const rent_id = await createRenting(
+    await createRenting(
       rent_title,
       rent_type,
       rent_rooms,
       rent_description,
       rent_price,
-      address,
+      rent_address,
       rent_location,
       services,
       username
     );
-
-    res.send({
-      status: 'ok',
-      rent_id,
-      data: {
-        rent_title,
-        rent_type,
-        rent_rooms,
-        rent_description,
-        rent_price,
-        rent_location,
-      },
-      message: `${rent_title} se ha publicado con éxito.`,
-    });
   } catch (error) {
     next(error);
   }
