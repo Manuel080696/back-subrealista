@@ -10,11 +10,13 @@ const getMyRentings = async (rental_owner) => {
       `
       SELECT
       rentals.rental_id,
+      rentals.rental_rent_id,
       rentals.rental_tenant,
       rentings.rent_title,
       rentings.rent_description,
       rentings.rent_location,
       rentings.rent_price,
+      rentings.rent_cover,
       rentals.rental_start,
       rentals.rental_end,
       rentals.rental_status
