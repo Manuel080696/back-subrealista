@@ -1,6 +1,6 @@
 const path = require('path');
 const { randomUUID } = require('crypto');
-const { createPathIfNotExists } = require('../../helpers/generateError.js');
+const { createPathIfNotExists } = require('../../helpers/index.js');
 const sharp = require('sharp');
 const { updateRent } = require('../../db/queries/rentings/updateRent.js');
 const jwt = require('jsonwebtoken');

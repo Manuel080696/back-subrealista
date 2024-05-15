@@ -1,11 +1,25 @@
-const { generateError } = require('../../../helpers/generateError.js');
+const { generateError } = require('../../../helpers/index.js');
 const getPool = require('../../getDB.js');
 
-const postNewImages = async (id, imgUrl) => {
+const postNewImages = async (username, id, imgUrl) => {
   let connection;
 
   try {
     connection = await getPool();
+
+    const [checkOwner] = await connection.query(
+      `
+      SELECT rent_owner FROM rentings WHERE rent_owner=?
+      `,
+      [username]
+    );
+
+    if (checkOwner.length === 0) {
+      throw generateError(
+        'No tienes permisos para añadir imágenes a este alojamiento',
+        401
+      );
+    }
 
     const [result] = await connection.query(
       `

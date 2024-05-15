@@ -1,15 +1,15 @@
 const { postNewImages } = require('../../db/queries/rentings/postNewImages.js');
 const path = require('path');
 const { randomUUID } = require('crypto');
-const { createPathIfNotExists } = require('../../helpers/generateError.js');
+const { createPathIfNotExists } = require('../../helpers/index.js');
 const sharp = require('sharp');
 const jwt = require('jsonwebtoken');
 
 const postRentImages = async (req, res, next) => {
   try {
-    /* const token = req.headers.authorization;
+    const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, process.env.SECRET);
-    const username = decodedToken.username; */
+    const username = decodedToken.username;
     const { id } = req.params;
 
     const HOST =
@@ -17,7 +17,6 @@ const postRentImages = async (req, res, next) => {
       (process.env.HOST || 'localhost') +
       ':' +
       (process.env.PORT || 3000);
-    console.log(req);
     const array = Object.values(req.files).slice();
 
     //Procesado imagenes
@@ -45,7 +44,7 @@ const postRentImages = async (req, res, next) => {
             }
           });
       }
-      await postNewImages(id, imgUrl);
+      await postNewImages(username, id, imgUrl);
     }
 
     res.send({
