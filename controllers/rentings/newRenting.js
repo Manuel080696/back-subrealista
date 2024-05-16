@@ -1,16 +1,18 @@
+const sharp = require('sharp');
+const { randomUUID } = require('crypto');
+const path = require('path');
+const { createUpload } = require('../../helpers/index.js');
+
 const { createRenting } = require('../../db/queries/rentings/createRenting.js');
 const jwt = require('jsonwebtoken');
-const path = require('path');
-const { randomUUID } = require('crypto');
-const { createPathIfNotExists } = require('../../helpers/index.js');
-const sharp = require('sharp');
-const { postNewImages } = require('../../db/queries/rentings/postNewImages.js');
 
 const newRenting = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, process.env.SECRET);
     const username = decodedToken.username;
+
+    const { images } = req.files;
 
     const {
       rent_title,
@@ -32,23 +34,22 @@ const newRenting = async (req, res, next) => {
       freezer,
       toaster,
       fully_equipped,
-      images,
     } = req.body;
 
     const services = {
-      elevator,
-      near_beach,
-      near_mountain,
-      hairdryer,
-      washing_machine,
-      ac,
-      smoke_detector,
-      first_kit_aid,
-      wifi,
-      refrigerator,
-      freezer,
-      toaster,
-      fully_equipped,
+      elevator: elevator === 'true' ? 1 : 0,
+      near_beach: near_beach === 'true' ? 1 : 0,
+      near_mountain: near_mountain === 'true' ? 1 : 0,
+      hairdryer: hairdryer === 'true' ? 1 : 0,
+      washing_machine: washing_machine === 'true' ? 1 : 0,
+      ac: ac === 'true' ? 1 : 0,
+      smoke_detector: smoke_detector === 'true' ? 1 : 0,
+      first_kit_aid: first_kit_aid === 'true' ? 1 : 0,
+      wifi: wifi === 'true' ? 1 : 0,
+      refrigerator: refrigerator === 'true' ? 1 : 0,
+      freezer: freezer === 'true' ? 1 : 0,
+      toaster: toaster === 'true' ? 1 : 0,
+      fully_equipped: fully_equipped === 'true' ? 1 : 0,
     };
 
     const rentLocations = [
@@ -74,7 +75,17 @@ const newRenting = async (req, res, next) => {
     ];
 
     const findMatchingLocation = (address) => {
-      return rentLocations.find((location) => address.includes(location));
+      // Función para quitar acentos de una cadena de texto
+      const removeAccents = (str) => {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      };
+
+      // Quitamos acentos del address
+      const addressWithoutAccents = removeAccents(address);
+
+      return rentLocations.find((location) =>
+        addressWithoutAccents.includes(location)
+      );
     };
 
     let rent_location;
@@ -83,62 +94,45 @@ const newRenting = async (req, res, next) => {
       rent_location = findMatchingLocation(rent_address);
     }
 
-    const rent_id = await createRenting(
-      rent_title,
-      rent_type,
-      rent_rooms,
-      rent_description,
-      rent_price,
-      rent_address,
-      rent_location,
-      services,
-      username
-    );
+    const processedImages = [];
 
-    const rentId = rent_id[0].rent_id;
-
-    if (images) {
-      const HOST =
-        'http://' +
-        (process.env.HOST || 'localhost') +
-        ':' +
-        (process.env.PORT || 3000);
-      const array = Object.values(images).slice();
-
-      //Procesado imagenes
-      for (let index = 0; index < array.length; index++) {
-        const uuid = randomUUID();
-        const directory = path.join(
-          __dirname,
-          '..',
-          '..',
-          'uploads',
-          'rent_images'
+    for (const image of images) {
+      let imageFileName;
+      const uploadsDir = path.join(__dirname, '../../uploads');
+      await createUpload(uploadsDir);
+      const photosDir = path.join(__dirname, `../../uploads/rent_images/`);
+      await createUpload(photosDir);
+      const processedImage = sharp(image.data)
+        .toFormat('webp')
+        .webp({ effort: 6, quality: 80 })
+        .resize({ with: 640, height: 800, fit: 'contain' });
+      imageFileName = `${randomUUID()}.webp`;
+      await processedImage.toFile(path.join(photosDir, imageFileName));
+      if (processedImage) {
+        processedImages.push(
+          `http://localhost:3000/uploads/rent_images/${imageFileName}`
         );
-        await createPathIfNotExists(directory);
-        console.log(array[index]);
-        const imageName = array[index].name;
-        const ext = path.extname(imageName).toLowerCase();
-        const newName = `${uuid}${ext}`;
-        const imgUrl = `${HOST}/uploads/rent_images/${newName}`;
-
-        if (req.files && array[index]) {
-          await sharp(array[index].data)
-            .webp({ effort: 6 })
-            .toFile(path.join(directory, newName), (err) => {
-              if (err) {
-                console.error(err);
-              }
-            });
-        }
-        await postNewImages(username, rentId, imgUrl);
+        console.log(
+          `http://localhost:3000/uploads/rent_images/${imageFileName}`
+        );
+        /* processedImages.push(processedImage); */
       }
     }
 
-    res.send({
-      status: 'ok',
-      message: 'Alquiler creado con éxito',
-    });
+    if (processedImages.length === images.length) {
+      await createRenting(
+        rent_title,
+        rent_type,
+        rent_rooms,
+        rent_description,
+        rent_price,
+        rent_address,
+        rent_location,
+        processedImages,
+        services,
+        username
+      );
+    }
   } catch (error) {
     next(error);
   }
