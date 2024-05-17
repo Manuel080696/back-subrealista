@@ -9,8 +9,6 @@ const rateOwner = async (req, res, next) => {
     const { rating, comments } = req.body;
     const { id } = req.params;
 
-    console.log(id);
-
     const rateInfo = await postRateOwner(username, id, rating, comments);
 
     res.send({
