@@ -1,32 +1,56 @@
-# Subrealista®️
-Os presentamos la API de Subrealista®️, una página creada para poder encontrar a tu inquilino o casero perfecto para tu estancia vacacional.
 
-## Instalación
-Para poder instalar el proyecto y probarlo, deberemos primero clonar el repositorio.
-```
-git@github.com:Kaysera14/back-subrealista.git
-```
-A continuación deberemos instalar las dependencias.
-```
-npm i
-```
 
-## Arranque inicial
-Para poder empezar a utilizar la API, primero deberemos inicializar la base de datos.
-```
-npm run initDB
-```
-¡No nos olvidemos de rellenarla!
-```
-npm run populateDB
-```
-Por último, ¡arrancamos el proyecto!
-```
-npm run start
-```
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 
-## Rutas para las requests
-Si accedemos a la carpeta docs, veremos un archivo llamado 'Subrealista.postman_collection.json', deberemos importarlo a nuestro Postman para que cargue las rutas predeterminadas y empezar a hacer uso de nuestra API.
+<h1 align="center">Subrealista 🏠✨</h1>
+<p align="center">El backend de nuestro clon de Airbnb, desarrollado con <strong>Node.js</strong> y <strong>Express</strong> 🚀</p>
 
-## Errores o sugerencias
-Te pedimos, por favor, que cualquier error o sugerencia nos la hagas llegar a través del sistema integrado en GitHub [aquí](https://github.com/Kaysera14/back-subrealista/issues)
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-v14.17.0-green" alt="Node.js Badge">
+  <img src="https://img.shields.io/badge/Express-v4.17.1-lightgrey" alt="Express Badge">
+</p>
+
+<h2>Descripción</h2>
+<p>Bienvenido al backend de <strong>Subrealista</strong>, una plataforma donde puedes encontrar y ofrecer alojamientos espectaculares en lugares soñados. Este backend está diseñado para manejar todas las operaciones del servidor de manera eficiente y segura.</p>
+
+<h2>Tecnologías Utilizadas</h2>
+<ul>
+  <li><strong>Node.js</strong> - Entorno de ejecución para JavaScript en el servidor.</li>
+  <li><strong>Express</strong> - Framework de Node.js para construir aplicaciones web y APIs.</li>
+</ul>
+
+<h2>Instalación</h2>
+<ol>
+  <li>Clona el repositorio:
+    <pre><code>git clone https://github.com/tu-usuario/subrealista-backend.git</code></pre>
+  </li>
+  <li>Ve al directorio del proyecto:
+    <pre><code>cd subrealista-backend</code></pre>
+  </li>
+  <li>Instala las dependencias:
+    <pre><code>npm install</code></pre>
+  </li>
+  <li>Inicia el servidor:
+    <pre><code>npm start</code></pre>
+  </li>
+</ol>
+
+<h2>Colaboradores</h2>
+<ul>
+  <li><a href="https://www.linkedin.com/in/antoniorg-dev/" target="_blank">Antonio Rodríguez-Giménez</a></li>
+  <li><a href="https://www.linkedin.com/in/yese-astarloa/" target="_blank">Yese Astarloa</a></li>
+</ul>
+
+<h2>Contribuciones</h2>
+<p>¡Las contribuciones son bienvenidas! Por favor, abre un issue o envía un pull request para cualquier mejora o corrección.</p>
+
+<h2>Agradecimientos</h2>
+<p>¡Gracias por visitar y contribuir a Subrealista! 😄</p>
+
+</body>
+</html>
